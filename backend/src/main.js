@@ -2,6 +2,10 @@ const express = require('express');
 const cors = require('cors');
 const http = require('http');
 
+const initializeDatabaseConnection = require('./database.js');
+
+initializeDatabaseConnection();
+
 const app = express();
 
 app.use(express.json());
