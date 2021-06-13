@@ -20,4 +20,6 @@ async function initializeDatabaseConnection() {
 	}
 }
 
-module.exports = initializeDatabaseConnection;
+initializeDatabaseConnection();
+
+module.exports = sequelize;
