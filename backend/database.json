@@ -1,0 +1,11 @@
+{
+	"defaultEnv": "development",
+	"development": {
+		"driver": "mysql",
+		"host": "localhost",
+		"user": "ivana",
+		"password": "123456",
+		"database": "prevent",
+		"multipleStatements": true
+	}
+}
