@@ -1,6 +1,7 @@
 {
   "name": "frontend",
-  "version": "0.0.0",
+  "version": "1.0.0",
+  "description": "Frontend application for Prevent task",
   "scripts": {
     "ng": "ng",
     "start": "ng serve --open",
