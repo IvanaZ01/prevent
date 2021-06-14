@@ -1,38 +1,34 @@
 const { DataTypes, Model } = require('sequelize');
 const sequelize = require('./../database');
 
-class User extends Model {}
+class Category extends Model {}
 
-User.init(
+Category.init(
 	{
-		role: {
-			type: DataTypes.STRING,
-			allowNull: false,
-		},
 		name: {
 			type: DataTypes.STRING,
 			allowNull: false,
 		},
-		username: {
+		description: {
+			type: DataTypes.STRING,
+			allowNull: true,
+		},
+		createdBy: {
 			type: DataTypes.STRING,
 			allowNull: false,
 		},
-		email: {
-			type: DataTypes.STRING,
-			allowNull: false,
-		},
-		passwordHash: {
-			type: DataTypes.STRING,
+		updatedBy: {
+			type: DataTypes.DECIMAL,
 			allowNull: false,
 		},
 	},
 	{
 		sequelize,
-		modelName: 'User',
+		modelName: 'Category',
 		timestamps: true,
 	}
 );
 
-console.log(User === sequelize.models.User);
+console.log(Category === sequelize.models.Category);
 
-module.exports = User;
+module.exports = Category;
