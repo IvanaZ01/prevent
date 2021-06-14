@@ -15,11 +15,11 @@ Category.init(
 		},
 		createdBy: {
 			type: DataTypes.STRING,
-			allowNull: false,
+			allowNull: true,
 		},
 		updatedBy: {
 			type: DataTypes.DECIMAL,
-			allowNull: false,
+			allowNull: true,
 		},
 	},
 	{
