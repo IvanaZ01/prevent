@@ -1,14 +1,15 @@
 /* You can add global styles to this file, and also import other style files */
 @import "~bootstrap-icons/font/bootstrap-icons.css";
-@import './shared/variables';
+@import "./shared/variables";
+@import "~angular-notifier/styles";
 
-*{
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
 }
 
-body{
-    background-color: $medium-gray;
-    font-family: sans-serif;
+body {
+  background-color: $medium-gray;
+  font-family: sans-serif;
 }

@@ -1,4 +1,4 @@
-const Article = require('../../models/Article')
+const { Article } = require('../../models');
 
 const updateArticle = async (
  {id, name, description, price, discount},res

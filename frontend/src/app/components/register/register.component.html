@@ -1,31 +1,121 @@
 <div class="container">
   <h1 class="login-heading margin1">Register</h1>
-  <form>
+  <form #f="ngForm">
+    <select
+      ngModel
+      class="text-input"
+      name="role"
+      #role="ngModel"
+      required
+    >
+      <option value="" disabled selected>Select the role</option>
+      <option *ngFor="let role of roles" [value]="role.value">
+        {{ role.label }}
+      </option>
+    </select>
+    <div [hidden]="role.valid || role.pristine" class="alert alert-danger">
+      Role is required
+    </div>
+
     <input
       class="text-input"
       type="text"
-      name="fullname"
-      placeholder="Full name"
+      ngModel
+      name="name"
+      #name="ngModel"
+      placeholder="Name"
+      required
+      minlength="3"
     />
 
     <input
       class="text-input"
       type="text"
-      name="Username"
+      ngModel
+      name="username"
+      #username="ngModel"
       placeholder="Username"
+      required
     />
-    <input class="text-input" type="email" name="Email" placeholder="Email" />
+
+    <input
+      class="text-input"
+      type="email"
+      ngModel
+      name="email"
+      #email="ngModel"
+      placeholder="Email"
+      required
+    />
 
     <input
       class="text-input"
       type="password"
+      ngModel
       name="password"
+      #password="ngModel"
       placeholder="Password"
+      required
+      minlength="6"
     />
+    
+    <!-- validation for name field -->
+    <div 
+    *ngIf="name.errors?.minlength && name.touched"
+    class="error-alert"
+    >
+      Minimum length for name is {{name.errors?.minlength?.requiredLength}}
+    </div>
+    <div 
+    *ngIf="name.errors?.required && name.touched"
+    class="error-alert"
+    >
+      Name is required.
+    </div>
 
+    <!-- validation for username -->
+    <div
+      [hidden]="!username.valid && !username.touched"
+      >
+      <div 
+      *ngIf="name.errors?.required"
+      class="error-alert">
+        Name is required.
+      </div>
+
+    </div>
+
+    <!-- validation for email -->
+    <div 
+    *ngIf="email.touched && email.errors?.required"
+    class="error-alert"
+    >
+      Email is required.
+    </div>
+
+    <!-- validation for password -->
+    <div
+      [hidden]="!password.touched">
+        <div  
+        *ngIf="password.errors?.required"
+        class="error-alert">
+          Password is required.
+        </div>
+        <div 
+        *ngIf="password.errors?.minlength"
+        class="error-alert">
+          Minimum length for password is {{password.errors?.minlength.requiredLength}}
+        </div>
+    </div>
 
     <br />
-    <button class="btn sign-btn margin1">SIGNUP</button>
+    <button
+      (click)="register(f.value)"
+      class="btn sign-btn margin1"
+      [disabled]="!f.valid"
+    >
+      SIGNUP
+    </button>
     <button routerLink="/login" class="btn login-btn">LOGIN</button>
   </form>
 </div>

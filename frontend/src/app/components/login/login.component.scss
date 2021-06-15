@@ -1,79 +1,85 @@
 @import "../../../shared/variables";
 
-.container{
-    border: 1px solid $dark-gray;
-    width: 500px;
-    margin: 5em auto;
-    padding: 2em;
-    background-color: $white;
+.container {
+  border: 1px solid $dark-gray;
+  width: 500px;
+  margin: 5em auto;
+  padding: 2em;
+  background-color: $white;
 }
 
-.margin1{
-    margin-bottom: 1em;
+.margin1 {
+  margin-bottom: 1em;
 }
 
-.login-heading{
-    font-size: 2rem;
-    color: $black;
+.login-heading {
+  font-size: 2rem;
+  color: $black;
 }
 
-.input-holder{
-    display: flex;
-    align-items: center;
+.error-alert{
+  @extend .margin1;
+  background-color: lighten($red, 45%);
+  padding: 1em;
+  color: $black;
 }
 
-.login-icon{
-    background-color: $red;
-    display: block;
-    color: white;
-    padding: .5em;
-
-    i{
-        font-size: 20px;
-    }
+.input-holder {
+  display: flex;
+  align-items: center;
 }
 
-.text-input{
-    font-size: 1rem;
-    display: block;
-    width: 100%;
-    padding: .6em;
-    border-radius: 0;
-    border: 1px solid $medium-gray;
+.login-icon {
+  background-color: $red;
+  display: block;
+  color: white;
+  padding: 0.5em;
+
+  i {
+    font-size: 20px;
+  }
 }
 
-.link{
-    text-decoration: none;
-    color: $dark-gray;
-    display: block;
-    font-size: .9rem;
-    &:hover{
-        text-decoration: underline;
-    }
+.text-input {
+  font-size: 1rem;
+  display: block;
+  width: 100%;
+  padding: 0.6em;
+  border-radius: 0;
+  border: 1px solid $medium-gray;
 }
 
-.btn{
-    display: block;
-    width: 100%;
-    padding: .6em;
-    font-size: 1rem;
-    border: 0;
-    cursor: pointer;
-    &:hover{
-        background-color: darken($red, 10%);
-        color: $white;
-    }
-    transition: all 100ms ease;
+.link {
+  text-decoration: none;
+  color: $dark-gray;
+  display: block;
+  font-size: 0.9rem;
+  &:hover {
+    text-decoration: underline;
+  }
 }
 
-.login-btn{
-    background-color: $red;
+.btn {
+  display: block;
+  width: 100%;
+  padding: 0.6em;
+  font-size: 1rem;
+  border: 0;
+  cursor: pointer;
+  &:hover {
+    background-color: darken($red, 10%);
     color: $white;
+  }
+  transition: all 200ms ease;
 }
 
-.sign-btn{
-    border: 2px solid $red;
-    background-color: $light-gray;
-    color: $black;
+.login-btn {
+  background-color: $red;
+  color: $white;
+}
 
+.sign-btn {
+  border: 2px solid $red;
+  background-color: $light-gray;
+  color: $black;
 }

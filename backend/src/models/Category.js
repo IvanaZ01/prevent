@@ -1,7 +1,8 @@
-const { DataTypes, Model } = require('sequelize');
+const { DataTypes, Sequelize } = require('sequelize');
 const sequelize = require('./../database');
+const Article = require('./Article');
 
-class Category extends Model {}
+class Category extends Sequelize.Model {}
 
 Category.init(
 	{
@@ -30,5 +31,6 @@ Category.init(
 );
 
 console.log(Category === sequelize.models.Category);
+console.log(sequelize.models);
 
 module.exports = Category;

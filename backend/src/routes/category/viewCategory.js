@@ -1,8 +1,8 @@
-const Category = require('../../models/Category')
+const { Category } = require('../../models');
 
-const viewCategory = async (id, res)=>{
-    const category = await Category.findByPk(id)
-    res.send(category)
-}
+const viewCategory = async (id, res) => {
+	const category = await Category.findByPk(id);
+	res.send(category);
+};
 
-module.exports = viewCategory
+module.exports = viewCategory;

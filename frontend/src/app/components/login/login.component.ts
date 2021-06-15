@@ -12,4 +12,12 @@ export class LoginComponent implements OnInit {
   ngOnInit(): void {
   }
 
+  log(something:any){
+    console.log(something)
+  }
+
+  login(value:object){
+    //http service logic goes here...   
+  }
+
 }

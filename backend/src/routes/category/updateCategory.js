@@ -1,16 +1,17 @@
-const Category = require('../../models/Category')
+const { Category } = require('../../models');
 
 const updateCategory = async (
- {id, name, description, price, discount},res
-)=>{
-   let category = await Category.findByPk(id)
+	{ id, name, description, price, discount },
+	res
+) => {
+	let category = await Category.findByPk(id);
 
-    if(name) category.name = name
-    if(description) category.description = description
+	if (name) category.name = name;
+	if (description) category.description = description;
 
-    category.save()
+	category.save();
 
-    res.send(category.toJSON())
-}
+	res.send(category.toJSON());
+};
 
 module.exports = updateCategory;

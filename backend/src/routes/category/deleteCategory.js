@@ -1,14 +1,12 @@
-const Category = require('../../models/Category')
+const { Category } = require('../../models');
 
-const deleteCategory = async (
- {id}, res
-)=>{
-   await Category.destroy({
-        where:{
-            id
-        }
-    })
-    res.send()
-}
+const deleteCategory = async ({ id }, res) => {
+	await Category.destroy({
+		where: {
+			id,
+		},
+	});
+	res.send();
+};
 
 module.exports = deleteCategory;
