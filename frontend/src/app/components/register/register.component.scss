@@ -17,39 +17,15 @@
     color: $black;
 }
 
-.input-holder{
-    display: flex;
-    align-items: center;
-}
-
-.login-icon{
-    background-color: $red;
-    display: block;
-    color: white;
-    padding: .5em;
-
-    i{
-        font-size: 20px;
-    }
-}
 
 .text-input{
+    @extend .margin1;
     font-size: 1rem;
     display: block;
     width: 100%;
     padding: .6em;
     border-radius: 0;
     border: 1px solid $medium-gray;
-}
-
-.link{
-    text-decoration: none;
-    color: $dark-gray;
-    display: block;
-    font-size: .9rem;
-    &:hover{
-        text-decoration: underline;
-    }
 }
 
 .btn{
@@ -67,13 +43,14 @@
 }
 
 .login-btn{
-    background-color: $red;
-    color: $white;
-}
-
-.sign-btn{
     border: 2px solid $red;
     background-color: $light-gray;
     color: $black;
 
+}
+
+.sign-btn{
+    background-color: $red;
+    color: $white;
+    
 }

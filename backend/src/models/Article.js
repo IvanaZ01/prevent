@@ -29,6 +29,7 @@ Article.init(
 	}
 );
 
+
 console.log(Article === sequelize.models.Article);
 
 module.exports = Article;
