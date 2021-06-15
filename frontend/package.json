@@ -4,7 +4,7 @@
   "description": "Frontend application for Prevent task",
   "scripts": {
     "ng": "ng",
-    "start": "ng serve --open",
+    "start": "ng serve",
     "build": "ng build",
     "watch": "ng build --watch --configuration development",
     "test": "ng test"
