@@ -1,0 +1,56 @@
+@import "../../../shared/variables";
+
+.container{
+    border: 1px solid $dark-gray;
+    width: 500px;
+    margin: 5em auto;
+    padding: 2em;
+    background-color: $white;
+}
+
+.margin1{
+    margin-bottom: 1em;
+}
+
+.login-heading{
+    font-size: 2rem;
+    color: $black;
+}
+
+
+.text-input{
+    @extend .margin1;
+    font-size: 1rem;
+    display: block;
+    width: 100%;
+    padding: .6em;
+    border-radius: 0;
+    border: 1px solid $medium-gray;
+}
+
+.btn{
+    display: block;
+    width: 100%;
+    padding: .6em;
+    font-size: 1rem;
+    border: 0;
+    cursor: pointer;
+    &:hover{
+        background-color: darken($red, 10%);
+        color: $white;
+    }
+    transition: all 100ms ease;
+}
+
+.login-btn{
+    border: 2px solid $red;
+    background-color: $light-gray;
+    color: $black;
+
+}
+
+.sign-btn{
+    background-color: $red;
+    color: $white;
+    
+}
