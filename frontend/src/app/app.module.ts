@@ -12,6 +12,8 @@ import { AppComponent } from './app.component';
 import { LoginComponent } from './components/login/login.component';
 import { RegisterComponent } from './components/register/register.component';
 import { NotificationService } from './services/notification.service';
+import { ApiService } from './services/api/api.service';
+import { ResetPasswordComponent } from './components/reset-password/reset-password.component';
 
 const notifierDefaultOptions: NotifierOptions = {
   position: {
@@ -55,7 +57,7 @@ const notifierDefaultOptions: NotifierOptions = {
 };
 
 @NgModule({
-  declarations: [AppComponent, LoginComponent, RegisterComponent],
+  declarations: [AppComponent, LoginComponent, RegisterComponent, ResetPasswordComponent],
   imports: [
     BrowserModule,
     HttpClientModule,
@@ -65,7 +67,7 @@ const notifierDefaultOptions: NotifierOptions = {
     BrowserAnimationsModule,
     NotifierModule.withConfig(notifierDefaultOptions),
   ],
-  providers: [NotificationService],
+  providers: [NotificationService, ApiService],
   bootstrap: [AppComponent],
 })
 export class AppModule {}

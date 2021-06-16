@@ -1,13 +1,7 @@
 <div class="container">
   <h1 class="login-heading margin1">Register</h1>
   <form #f="ngForm">
-    <select
-      ngModel
-      class="text-input"
-      name="role"
-      #role="ngModel"
-      required
-    >
+    <select ngModel class="text-input" name="role" #role="ngModel" required>
       <option value="" disabled selected>Select the role</option>
       <option *ngFor="let role of roles" [value]="role.value">
         {{ role.label }}
@@ -28,6 +22,14 @@
       minlength="3"
     />
 
+    <!-- validation for name field -->
+    <div *ngIf="name.errors?.minlength && name.touched" class="error-alert">
+      Minimum length for name is {{ name.errors?.minlength?.requiredLength }}
+    </div>
+    <div *ngIf="name.errors?.required && name.touched" class="error-alert">
+      Name is required.
+    </div>
+
     <input
       class="text-input"
       type="text"
@@ -37,6 +39,13 @@
       placeholder="Username"
       required
     />
+
+    <!-- validation for username -->
+    <div [hidden]="!username.valid && !username.touched">
+      <div *ngIf="username.errors?.required" class="error-alert">
+        Username is required.
+      </div>
+    </div>
 
     <input
       class="text-input"
@@ -48,6 +57,11 @@
       required
     />
 
+    <!-- validation for email -->
+    <div *ngIf="email.touched && email.errors?.required" class="error-alert">
+      Email is required.
+    </div>
+
     <input
       class="text-input"
       type="password"
@@ -58,54 +72,16 @@
       required
       minlength="6"
     />
-    
-    <!-- validation for name field -->
-    <div 
-    *ngIf="name.errors?.minlength && name.touched"
-    class="error-alert"
-    >
-      Minimum length for name is {{name.errors?.minlength?.requiredLength}}
-    </div>
-    <div 
-    *ngIf="name.errors?.required && name.touched"
-    class="error-alert"
-    >
-      Name is required.
-    </div>
-
-    <!-- validation for username -->
-    <div
-      [hidden]="!username.valid && !username.touched"
-      >
-      <div 
-      *ngIf="name.errors?.required"
-      class="error-alert">
-        Name is required.
-      </div>
-
-    </div>
-
-    <!-- validation for email -->
-    <div 
-    *ngIf="email.touched && email.errors?.required"
-    class="error-alert"
-    >
-      Email is required.
-    </div>
 
     <!-- validation for password -->
-    <div
-      [hidden]="!password.touched">
-        <div  
-        *ngIf="password.errors?.required"
-        class="error-alert">
-          Password is required.
-        </div>
-        <div 
-        *ngIf="password.errors?.minlength"
-        class="error-alert">
-          Minimum length for password is {{password.errors?.minlength.requiredLength}}
-        </div>
+    <div [hidden]="!password.touched">
+      <div *ngIf="password.errors?.required" class="error-alert">
+        Password is required.
+      </div>
+      <div *ngIf="password.errors?.minlength" class="error-alert">
+        Minimum length for password is
+        {{ password.errors?.minlength.requiredLength }}
+      </div>
     </div>
 
     <br />
