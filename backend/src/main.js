@@ -21,7 +21,7 @@ const createCategory = require('./routes/category/createCategory')
 const updateCategory = require('./routes/category/updateCategory')
 const deleteCategory = require('./routes/category/deleteCategory');
 const getAllCategories = require('./routes/category/getAllCategories');
-const viewCategory = require('./routes/category/viewCategory')
+const viewCategory = require('./routes/category/viewCategory');
 
 app.use(express.json());
 app.use(cors());

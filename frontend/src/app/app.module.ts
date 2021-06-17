@@ -16,6 +16,7 @@ import { ApiService } from './services/api/api.service';
 import { ResetPasswordComponent } from './components/pages/reset-password/reset-password.component';
 import { NewPasswordComponent } from './components/pages/new-password/new-password.component';
 import { NavbarComponent } from './components/navbar/navbar.component';
+import { AdminComponent } from './components/pages/admin/admin.component';
 
 const notifierDefaultOptions: NotifierOptions = {
   position: {
@@ -59,7 +60,7 @@ const notifierDefaultOptions: NotifierOptions = {
 };
 
 @NgModule({
-  declarations: [AppComponent, LoginComponent, RegisterComponent, ResetPasswordComponent, NewPasswordComponent, NavbarComponent],
+  declarations: [AppComponent, LoginComponent, RegisterComponent, ResetPasswordComponent, NewPasswordComponent, NavbarComponent, AdminComponent],
   imports: [
     BrowserModule,
     HttpClientModule,
