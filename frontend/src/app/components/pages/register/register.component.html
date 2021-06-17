@@ -7,9 +7,6 @@
         {{ role.label }}
       </option>
     </select>
-    <div [hidden]="role.valid || role.pristine" class="alert alert-danger">
-      Role is required
-    </div>
 
     <input
       class="text-input"
@@ -22,13 +19,10 @@
       minlength="3"
     />
 
-    <!-- validation for name field -->
     <div *ngIf="name.errors?.minlength && name.touched" class="error-alert">
       Minimum length for name is {{ name.errors?.minlength?.requiredLength }}
     </div>
-    <div *ngIf="name.errors?.required && name.touched" class="error-alert">
-      Name is required.
-    </div>
+
 
     <input
       class="text-input"
@@ -74,22 +68,26 @@
     />
 
     <!-- validation for password -->
-    <div [hidden]="!password.touched">
-      <div *ngIf="password.errors?.required" class="error-alert">
-        Password is required.
-      </div>
-      <div *ngIf="password.errors?.minlength" class="error-alert">
+
+      <div *ngIf="!password.touched && password.errors?.minlength" class="error-alert">
         Minimum length for password is
         {{ password.errors?.minlength.requiredLength }}
       </div>
+
+
+    <div 
+    *ngIf="notFilled" 
+    class="error-alert">
+      Please fill all the required fields.
     </div>
 
     <br />
     <button
-      (click)="register(f.value)"
+      (click)="validate(f.valid, f.value)"
       class="btn sign-btn margin1"
-      [disabled]="!f.valid"
     >
+
+
       SIGNUP
     </button>
     <button routerLink="/login" class="btn login-btn">LOGIN</button>

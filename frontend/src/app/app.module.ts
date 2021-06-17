@@ -9,12 +9,13 @@ import { NotifierModule, NotifierOptions } from 'angular-notifier';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { LoginComponent } from './components/login/login.component';
-import { RegisterComponent } from './components/register/register.component';
+import { LoginComponent } from './components/pages/login/login.component';
+import { RegisterComponent } from './components/pages/register/register.component';
 import { NotificationService } from './services/notification.service';
 import { ApiService } from './services/api/api.service';
-import { ResetPasswordComponent } from './components/reset-password/reset-password.component';
-import { NewPasswordComponent } from './components/new-password/new-password.component';
+import { ResetPasswordComponent } from './components/pages/reset-password/reset-password.component';
+import { NewPasswordComponent } from './components/pages/new-password/new-password.component';
+import { NavbarComponent } from './components/navbar/navbar.component';
 
 const notifierDefaultOptions: NotifierOptions = {
   position: {
@@ -58,7 +59,7 @@ const notifierDefaultOptions: NotifierOptions = {
 };
 
 @NgModule({
-  declarations: [AppComponent, LoginComponent, RegisterComponent, ResetPasswordComponent, NewPasswordComponent],
+  declarations: [AppComponent, LoginComponent, RegisterComponent, ResetPasswordComponent, NewPasswordComponent, NavbarComponent],
   imports: [
     BrowserModule,
     HttpClientModule,

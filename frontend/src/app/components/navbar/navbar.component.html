@@ -1,0 +1,31 @@
+<div class="header">
+  <div class="content-wrapper">
+    <div class="logo_nav">
+      <p class="logo">Logo</p>
+
+      <div
+        class="burger-menu"
+        [class.open]="navOpen"
+        (click)="toggleNav()"
+      ></div>
+    </div>
+
+    <div class="account">
+      <div (click)="toggleAccOptions()">
+        <span>Account</span>
+        <i class="bi bi-chevron-down"></i>
+      </div>
+
+      <div class="options-holder" *ngIf="accOptionsOpen">
+        <a routerLink="/login" class="account-option"> Log in </a>
+        <a routerLink="register" class="account-option"> Create new </a>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="nav" [class.navClosed]="!navOpen">
+  <ul class="list">
+    <li *ngFor="let item of items" class="list_item">{{ item }}</li>
+  </ul>
+</div>

@@ -2,14 +2,12 @@ import { Component, OnInit } from '@angular/core';
 import { UserService } from 'src/app/services/api/user.service';
 import { NotificationService } from 'src/app/services/notification.service';
 
-
 @Component({
   selector: 'app-register',
   templateUrl: './register.component.html',
   styleUrls: ['./register.component.scss'],
 })
 export class RegisterComponent implements OnInit {
-
   roles = [
     {
       label: 'Administrator',
@@ -20,6 +18,7 @@ export class RegisterComponent implements OnInit {
       value: 'user',
     },
   ];
+  notFilled = false;
 
   constructor(
     private _notificationService: NotificationService,
@@ -28,8 +27,15 @@ export class RegisterComponent implements OnInit {
 
   ngOnInit(): void {}
 
-  register(value:object) {
-    
+  validate(valid: boolean | null, value: object) {
+    if (!valid) {
+      this.notFilled = true;
+    } else {
+      this.register(value);
+    }
+  }
+
+  register(value: object) {
     this._http.create(value).subscribe(
       (success) => {
         this._notificationService.success('success!');
@@ -40,7 +46,7 @@ export class RegisterComponent implements OnInit {
     );
   }
 
-  log(some:any){
-    console.log(some)
+  log(some: any) {
+    console.log(some);
   }
 }
