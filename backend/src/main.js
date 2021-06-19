@@ -33,7 +33,9 @@ app.post('/user', (req, res) => createUser(req.body, res));
 //article route requests 
 app.get('/article', (req, res)=>getAllArticles(res))
 app.get('/article/:id', (req,res)=>viewArticle(req.params.id, res))
-app.post('/article', (req,res)=>createArticle(req.body, res))
+app.post('/article', (req,res)=>{
+	createArticle(req.body, res)
+})
 app.put('/article', (req, res)=>updateArticle(req.body, res))
 app.delete('/article', (req,res)=>deleteArticle(req.body, res))
 

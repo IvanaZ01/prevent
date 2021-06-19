@@ -4,21 +4,47 @@
   <div class="edit-container">
     <h2 class="heading">Add new Article</h2>
 
-    <form>
-      <label for="name"
-        >Article name:
-        <input ngModel #name="ngModel" type="text" name="name" />
-      </label>
+    <form #fA="ngForm">
+      <div class="flex-container">
+        <div class="label-input-pairs">
+          <label for="name"
+            >Article name:
+          </label>
+           <input 
+           ngModel 
+           #name="ngModel" 
+           type="text" 
+           name="name" 
+           required/>
+        </div>
+  
+        <div class="label-input-pairs">
+          <label for="price"
+            >Price:
+          </label>
+          <input 
+          ngModel 
+          #price="ngModel" 
+          type="number" 
+          name="price" 
+          required
+          />
+        </div>
 
-      <label for="price"
-        >Price:
-        <input ngModel #price="ngModel" type="number" name="price" />
-      </label>
+        <div class="label-input-pairs">
+          <label for="discount">
+            Discount:
+          </label>
+          <input 
+          ngModel 
+          name="discount" 
+          #discount="ngModel" 
+          type="number" 
+          />
+        </div>
+  
 
-      <label for="discount">
-        Discount:
-        <input ngModel name="discount" #discount="ngModel" type="number" />
-      </label>
+      </div>
 
       <label class="desc-label" for="description">Description: </label>
 
@@ -30,13 +56,18 @@
         rows="7"
       >
       </textarea>
-      <button class="add-btn">ADD</button>
+      <button 
+      [disabled]="!fA.valid"
+      (click)="validateArticle(fA.valid, fA, fA.value)"
+      class="add-btn">ADD</button>
     </form>
   </div>
 
+  <!-- category form -->
+
   <div class="edit-container">
     <h2 class="heading">Add new Category</h2>
-    <form>
+    <form #fC="ngForm">
       <label for="name"
         >Category name:
         <input ngModel #nameC="ngModel" type="text" name="name" />
@@ -52,7 +83,7 @@
         rows="7"
       >
       </textarea>
-      <button class="add-btn">ADD</button>
+      <button (click)="validateCategory(fC.valid, fC, fC.value)" class="add-btn">ADD</button>
     </form>
   </div>
 </div>

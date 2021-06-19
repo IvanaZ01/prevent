@@ -1,7 +1,7 @@
 const { User } = require('./../../models');
 
 const createUser = async ({ name, role, email, username, password }, res) => {
-	let user = User.create({
+	let user = await User.create({
 		name,
 		role,
 		username,

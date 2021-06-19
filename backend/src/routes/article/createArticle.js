@@ -1,7 +1,7 @@
 const { Article, Category } = require('../../models');
 
 const createArticle = async (
-	{ name, description, price, discount, categories },
+	{ name, description, price, discount },
 	res
 ) => {
 	let article = await Article.create(
@@ -10,17 +10,13 @@ const createArticle = async (
 			description,
 			price,
 			discount,
-			categories,
-		},
-		{
-			include: [Category],
 		}
 	);
 
-	categories.forEach(async (category) => {
-		const createdCategory = await Category.create({ ...category });
-		await article.addCategory(createdCategory);
-	});
+	// categories.forEach(async (category) => {
+	// 	const createdCategory = await Category.create({ ...category });
+	// 	await article.addCategory(createdCategory);
+	// });
 
 	res.send(article.toJSON());
 };

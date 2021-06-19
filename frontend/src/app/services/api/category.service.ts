@@ -5,9 +5,9 @@ import { ApiService } from './api.service';
 @Injectable({
   providedIn: 'root'
 })
-export class UserService extends ApiService{
-  
-  constructor(http: HttpClient) { 
-    super('http://localhost:3000/user', http)
+export class CategoryService extends ApiService{
+
+  constructor(private http: HttpClient) { 
+    super('http://localhost:3000/category', http)
   }
 }

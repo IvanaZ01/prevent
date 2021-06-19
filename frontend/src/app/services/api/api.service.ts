@@ -13,7 +13,8 @@ export class ApiService {
     return this._http.get(this.url)
   }
 
-  create(resource:any){
+  create(resource:any){    
+    // console.log(resource);
     return this._http.post(this.url, resource)
   }
 
