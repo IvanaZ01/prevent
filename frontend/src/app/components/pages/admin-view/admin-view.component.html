@@ -1,0 +1,92 @@
+<app-navbar (toggledNav)="setNavState($event)"></app-navbar>
+
+<div class="content" [class.all-the-way]="!isNavOpen">
+
+        <ul class="tabs">
+            <li 
+            class="tabs-item" 
+            [class.item-active]="active === 'users'"
+            (click)="getUsers()"
+            >
+                Users 
+            </li>
+            <li 
+            class="tabs-item"
+            [class.item-active]="active === 'articles'"
+            (click)="getArticles()"
+            >
+                Articles
+            </li>
+            <li 
+            class="tabs-item"
+            [class.item-active]="active === 'categories'"
+            (click)="getCategories()"
+            >
+                Categories
+            </li>
+          </ul>
+
+    <div class="data-display">
+        <!-- users table -->
+        <table [hidden]="active !== 'users'">
+            <tr class="t-header">
+                <td>Name</td>
+                <td>Username</td>
+                <td>Email</td>
+                <td>Actions</td>
+            </tr>
+
+            <tr class="row" *ngFor="let user of users">
+                <td>{{user.name}}</td>
+                <td>{{user.username}}</td>
+                <td>{{user.email}}</td>
+                <td>
+                    <i class="bi bi-pencil-square"></i>
+                    <i class="bi bi-trash"></i>
+                    <i class="bi bi-x-circle"></i>
+                </td>
+            </tr>
+        </table>
+
+        <!-- articles table -->
+        <table class="t-art" [hidden]="active !== 'articles'">
+            <tr class="t-header">
+                <td>Name</td>
+                <td>Description</td>
+                <td>Price</td>
+                <td>Discount</td>
+                <td>Actions</td>
+            </tr>
+
+            <tr class="row" *ngFor="let article of articles">
+                <td>{{article.name}}</td>
+                <td>{{article.description}}</td>
+                <td>{{article.price}}</td>
+                <td>{{article.discount}}</td>
+                <td>
+                    <i class="bi bi-pencil-square"></i>
+                    <i class="bi bi-trash"></i>
+                </td>
+            </tr>
+        </table>
+
+        <!-- categories table -->
+        <table class="t-cat" [hidden]="active !== 'categories'">
+            <tr class="t-header">
+                <td>Name</td>
+                <td>Description</td>
+                <td>Actions</td>
+            </tr>
+
+            <tr class="row" *ngFor="let category of categories">
+                <td>{{category.name}}</td>
+                <td>{{category.description}}</td>
+                <td>
+                    <i class="bi bi-pencil-square"></i>
+                    <i class="bi bi-trash"></i>
+                </td>
+            </tr>
+        </table>
+    </div>
+</div>
+

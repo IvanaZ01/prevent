@@ -5,8 +5,8 @@ import { NotificationService } from 'src/app/services/notification.service';
 
 @Component({
   selector: 'app-admin',
-  templateUrl: './admin.component.html',
-  styleUrls: ['./admin.component.scss'],
+  templateUrl: './admin-manage.component.html',
+  styleUrls: ['./admin-manage.component.scss'],
 })
 export class AdminComponent implements OnInit {
   isNavOpen = true;

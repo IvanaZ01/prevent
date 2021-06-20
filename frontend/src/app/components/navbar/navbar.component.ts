@@ -9,7 +9,12 @@ export class NavbarComponent implements OnInit {
   navOpen = true;
   accOptionsOpen = false;
   @Output() toggledNav: EventEmitter<boolean> =   new EventEmitter();
-  items = ['Home', 'Contact', 'Admin'];
+
+  items = [
+    {name: 'Home', link:'/'},
+    {name: 'Add new', link:'/admin/manage'},
+    {name: 'View all', link:'/admin'},
+];
 
   constructor() {}
 

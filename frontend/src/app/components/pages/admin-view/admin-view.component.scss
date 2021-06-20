@@ -1,0 +1,94 @@
+@import "./../../../../shared/variables";
+
+.content {
+  position: absolute;
+  right: 70px;
+  top: 5em;
+  width: 73%;
+  z-index: -1;
+}
+
+@media (max-width: 1300px) {
+  .content {
+    width: 69%;
+  }
+}
+@media (max-width: 1080px) {
+  .content {
+    left: 70px;
+    width: unset;
+  }
+}
+
+.all-the-way {
+  left: 70px;
+  width: unset;
+}
+
+.data-display {
+  background-color: $white;
+  margin-bottom: 1.3em;
+  box-shadow: 3px 3px 6px -1px darken($medium-gray, 20%);
+  padding: 1.5em 3em;
+  overflow: hidden;
+}
+
+.tabs {
+  list-style: none;
+  display: flex;
+
+  &-item {
+    padding: 0.8em 1.5em;
+    background-color: $light-gray;
+    border-radius: 10px 10px 0 0;
+    border-right: 2px solid $red;
+    cursor: pointer;
+  }
+}
+
+.item-active {
+  background-color: $white;
+  z-index: 5555;
+}
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+  border: 1px solid $medium-gray;
+  td {
+    width: 25%;
+    padding: 1em;
+  }
+
+  .t-header td {
+    border: 1px solid $medium-gray;
+    border-bottom: 1px solid $dark-gray;
+
+  }
+
+  .row:nth-child(2n + 1) {
+    background-color: $light-gray;
+  }
+
+  .row td{
+    &:last-child{
+        text-align: center;
+    }
+  }
+
+  i{
+      color: $red;
+      font-size: 1.5rem;
+      cursor: pointer;
+      &:nth-child(2){
+          margin: 0 1em 0;
+      }
+  }
+}
+
+.t-art td{
+    width: 20%;
+}
+.t-cat td{
+    width: 33%;
+}

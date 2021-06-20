@@ -1,6 +1,7 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import { AdminComponent } from './components/pages/admin/admin.component';
+import { AdminComponent } from './components/pages/admin-manage/admin-manage.component';
+import { AdminViewComponent } from './components/pages/admin-view/admin-view.component';
 import { LoginComponent } from './components/pages/login/login.component';
 import { NewPasswordComponent } from './components/pages/new-password/new-password.component';
 import { RegisterComponent } from './components/pages/register/register.component';
@@ -20,7 +21,10 @@ const routes: Routes = [
     path:'new-password', component: NewPasswordComponent
   },
   {
-    path:'admin', component: AdminComponent
+    path:'admin/manage', component: AdminComponent
+  },
+  {
+    path:'admin', component: AdminViewComponent
   }
 ];
 

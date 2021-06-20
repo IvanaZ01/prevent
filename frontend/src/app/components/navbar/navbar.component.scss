@@ -138,7 +138,13 @@ font-size: 2em;
     list-style: none;
 
     &_item {
-      padding: 0.5em 1em;
+      padding: 1em;
+      border-bottom: 1px solid $medium-gray;
+      &:hover{
+        background-color: $red;
+        color: $white;
+        cursor: pointer;
+      }
     }
   }
 }
