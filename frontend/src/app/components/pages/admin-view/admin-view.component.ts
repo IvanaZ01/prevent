@@ -81,6 +81,8 @@ export class AdminViewComponent implements OnInit {
 
   //modal functions
 
+  //updating article
+
   articleModel = {
     id:0,
     name: '',
@@ -89,7 +91,7 @@ export class AdminViewComponent implements OnInit {
     description: '',
   };
 
-  openModal(article: {
+  openModalForArticle(article: {
     id:number;
     name: string;
     price: number;
@@ -130,4 +132,46 @@ export class AdminViewComponent implements OnInit {
       );
 
   }
+
+  //update category
+
+
+  categoryModel = {
+    id:0,
+    name: '',
+    description: '',
+  };
+
+  openModalForCategory(category: {
+    id:number;
+    name: string;
+    description: string;
+  }){
+    this.categoryModel.id = category.id
+    this.categoryModel.name = category.name
+    this.categoryModel.description = category.description
+
+    this.modalActive = true;
+  }
+
+  updateCategory(
+    id:number,
+    obj: {
+      name: string;
+      price: number;
+      discount: number;
+      description: string;
+    }
+  ) {
+      this.categoryHttp.update({id, ...obj}).subscribe(
+        (success) => {
+          this._notificationService.success('Updated');
+          this.getCategories();
+          this.modalActive = false
+        },
+        (error) => this._notificationService.error(error)
+      );
+
+  }
+
 }

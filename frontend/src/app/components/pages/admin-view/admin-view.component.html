@@ -63,7 +63,7 @@
                 <td>{{article.discount}}</td>
                 <td>
                     <i 
-                    (click)="openModal(article)"
+                    (click)="openModalForArticle(article)"
                     class="bi bi-pencil-square"></i>
                     <i 
                     (click)="deleteFunc(article.id)"
@@ -84,7 +84,9 @@
                 <td>{{category.name}}</td>
                 <td>{{category.description}}</td>
                 <td>
-                    <i class="bi bi-pencil-square"></i>
+                    <i 
+                    (click)="openModalForCategory(category)"
+                    class="bi bi-pencil-square"></i>
                     <i
                     (click)="deleteFunc(category.id)" 
                     class="bi bi-trash"></i>
@@ -96,6 +98,7 @@
 
 <div class="darken" [hidden]="!modalActive">
     <div 
+    *ngIf="active === 'articles'"
     [class.modalOpen]="modalActive"
     class="modal">
         <div class="modal-heading">
@@ -159,6 +162,48 @@
             <button 
             [disabled]="!fA.valid"
             (click)="updateArticle(articleModel.id, fA.value)"
+            class="add-btn">ADD</button>
+          </form>
+    </div>
+
+    <div 
+    *ngIf="active === 'categories'"
+    [class.modalOpen]="modalActive"
+    class="modal">
+        <div class="modal-heading">
+            <h2>Edit Category</h2>
+            <i 
+            (click)="closeModal()"
+            class="bi bi-x-lg"></i>
+        </div>
+        <form #fC="ngForm">
+              <div class="label-input-pairs">
+                <label for="name"
+                  >Category name:
+                </label>
+                 <input 
+                 ngModel 
+                 #name="ngModel" 
+                 [(ngModel)]="categoryModel.name"
+                 type="text" 
+                 name="name" 
+                 required/>
+              </div>
+      
+            <label class="desc-label" for="description">Description: </label>
+      
+            <textarea
+              ngModel
+              #description="ngModel"
+              [(ngModel)]="categoryModel.description"
+              name="description"
+              cols="20"
+              rows="7"
+            >
+            </textarea>
+            <button 
+            [disabled]="!fC.valid"
+            (click)="updateCategory(categoryModel.id, fC.value)"
             class="add-btn">ADD</button>
           </form>
     </div>

@@ -43,7 +43,7 @@ app.delete('/article/:id', (req,res)=>deleteArticle(req.params.id, res))
 app.get('/category', (req,res)=>getAllCategories(res))
 app.get('/category/:id', (req,res)=>viewCategory(req.params.id, res))
 app.post('/category', (req,res)=>createCategory(req.body, res))
-app.put('/category', (req,res)=>updateCategory(req.body, res))
+app.put('/category/:id', (req,res)=>updateCategory(req.params.id, req.body, res))
 app.delete('/category/:id', (req,res)=>deleteCategory(req.params.id, res))
 
 const server = http.createServer(app).listen(3000, () => {

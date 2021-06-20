@@ -1,7 +1,8 @@
 const { Category } = require('../../models');
 
 const updateCategory = async (
-	{ id, name, description, price, discount },
+	id,
+	{name, description},
 	res
 ) => {
 	let category = await Category.findByPk(id);
