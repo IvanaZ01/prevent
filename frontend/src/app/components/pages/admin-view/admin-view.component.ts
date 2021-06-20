@@ -15,6 +15,7 @@ export class AdminViewComponent implements OnInit {
   articles: any;
   categories: any;
   active = 'users';
+  modalActive = false;
 
   constructor(
     private _notificationService: NotificationService,
@@ -40,8 +41,8 @@ export class AdminViewComponent implements OnInit {
   getArticles() {
     this.articleHttp.getAll().subscribe(
       (articles) => {
-        this.articles = articles
-        this.active = 'articles'
+        this.articles = articles;
+        this.active = 'articles';
       },
       (error) => this._notificationService.error(error)
     );
@@ -50,14 +51,83 @@ export class AdminViewComponent implements OnInit {
   getCategories() {
     this.categoryHttp.getAll().subscribe(
       (categories) => {
-        this.categories = categories
-        this.active = 'categories'
+        this.categories = categories;
+        this.active = 'categories';
       },
       (error) => this._notificationService.error(error)
     );
   }
 
+  deleteFunc(id: string | number) {
+    const conf = confirm(`Are you sure ?`);
+    if (!conf) return;
+
+    if (this.active === 'articles') {
+      this.articleHttp.delete(id).subscribe((success) => {
+        this._notificationService.success('Article deleted');
+        this.getArticles();
+      });
+    } else {
+      this.categoryHttp.delete(id).subscribe((success) => {
+        this._notificationService.success('Category deleted');
+        this.getCategories();
+      });
+    }
+  }
+
   setNavState(event: any) {
     this.isNavOpen = event;
+  }
+
+  //modal functions
+
+  articleModel = {
+    id:0,
+    name: '',
+    price: 0,
+    discount: 0,
+    description: '',
+  };
+
+  openModal(article: {
+    id:number;
+    name: string;
+    price: number;
+    discount: number;
+    description: string;
+  }) {
+
+    this.articleModel.id = article.id;
+    this.articleModel.name = article.name;
+    this.articleModel.price = article.price;
+    this.articleModel.discount = article.discount;
+    this.articleModel.description = article.description;
+
+    this.modalActive = true;
+  }
+
+  closeModal() {
+    this.modalActive = false;
+  }
+
+
+  updateArticle(
+    id:number,
+    obj: {
+      name: string;
+      price: number;
+      discount: number;
+      description: string;
+    }
+  ) {
+      this.articleHttp.update({id, ...obj}).subscribe(
+        (success) => {
+          this._notificationService.success('Updated');
+          this.getArticles();
+          this.modalActive = false
+        },
+        (error) => this._notificationService.error(error)
+      );
+
   }
 }

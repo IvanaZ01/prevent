@@ -1,7 +1,7 @@
 const { Article } = require('../../models');
 
-const updateArticle = async (
- {id, name, description, price, discount},res
+const updateArticle = async (id,
+ {name, description, price, discount},res
 )=>{
    let article = await Article.findByPk(id)
 

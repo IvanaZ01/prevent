@@ -1,7 +1,7 @@
 const { Article } = require('../../models');
 
 const updateArticle = async (
- {id}, res
+ id, res
 )=>{
    await Article.destroy({
         where:{

@@ -1,6 +1,6 @@
 const { Category } = require('../../models');
 
-const deleteCategory = async ({ id }, res) => {
+const deleteCategory = async (id, res) => {
 	await Category.destroy({
 		where: {
 			id,

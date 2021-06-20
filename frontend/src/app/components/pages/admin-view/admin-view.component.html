@@ -41,8 +41,6 @@
                 <td>{{user.username}}</td>
                 <td>{{user.email}}</td>
                 <td>
-                    <i class="bi bi-pencil-square"></i>
-                    <i class="bi bi-trash"></i>
                     <i class="bi bi-x-circle"></i>
                 </td>
             </tr>
@@ -64,8 +62,12 @@
                 <td>{{article.price}}</td>
                 <td>{{article.discount}}</td>
                 <td>
-                    <i class="bi bi-pencil-square"></i>
-                    <i class="bi bi-trash"></i>
+                    <i 
+                    (click)="openModal(article)"
+                    class="bi bi-pencil-square"></i>
+                    <i 
+                    (click)="deleteFunc(article.id)"
+                    class="bi bi-trash"></i>
                 </td>
             </tr>
         </table>
@@ -83,10 +85,82 @@
                 <td>{{category.description}}</td>
                 <td>
                     <i class="bi bi-pencil-square"></i>
-                    <i class="bi bi-trash"></i>
+                    <i
+                    (click)="deleteFunc(category.id)" 
+                    class="bi bi-trash"></i>
                 </td>
             </tr>
         </table>
     </div>
 </div>
 
+<div class="darken" [hidden]="!modalActive">
+    <div 
+    [class.modalOpen]="modalActive"
+    class="modal">
+        <div class="modal-heading">
+            <h2>Edit Article</h2>
+            <i 
+            (click)="closeModal()"
+            class="bi bi-x-lg"></i>
+        </div>
+        <form #fA="ngForm">
+              <div class="label-input-pairs">
+                <label for="name"
+                  >Article name:
+                </label>
+                 <input 
+                 ngModel 
+                 #name="ngModel" 
+                 [(ngModel)]="articleModel.name"
+                 type="text" 
+                 name="name" 
+                 required/>
+              </div>
+        
+              <div class="label-input-pairs">
+                <label for="price"
+                  >Price:
+                </label>
+                <input 
+                ngModel 
+                #price="ngModel" 
+                [(ngModel)]="articleModel.price"
+                type="number" 
+                name="price" 
+                required
+                />
+              </div>
+      
+              <div class="label-input-pairs">
+                <label for="discount">
+                  Discount:
+                </label>
+                <input 
+                ngModel 
+                name="discount" 
+                #discount="ngModel" 
+                [(ngModel)]="articleModel.discount"
+                type="number" 
+                />
+              </div>
+      
+            <label class="desc-label" for="description">Description: </label>
+      
+            <textarea
+              ngModel
+              #description="ngModel"
+              [(ngModel)]="articleModel.description"
+              name="description"
+              cols="20"
+              rows="7"
+            >
+            </textarea>
+            <button 
+            [disabled]="!fA.valid"
+            (click)="updateArticle(articleModel.id, fA.value)"
+            class="add-btn">ADD</button>
+          </form>
+    </div>
+    
+</div>

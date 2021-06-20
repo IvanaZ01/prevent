@@ -36,15 +36,15 @@ app.get('/article/:id', (req,res)=>viewArticle(req.params.id, res))
 app.post('/article', (req,res)=>{
 	createArticle(req.body, res)
 })
-app.put('/article', (req, res)=>updateArticle(req.body, res))
-app.delete('/article', (req,res)=>deleteArticle(req.body, res))
+app.put('/article/:id', (req, res)=>updateArticle(req.params.id, req.body, res))
+app.delete('/article/:id', (req,res)=>deleteArticle(req.params.id, res))
 
 // category route requests
 app.get('/category', (req,res)=>getAllCategories(res))
 app.get('/category/:id', (req,res)=>viewCategory(req.params.id, res))
 app.post('/category', (req,res)=>createCategory(req.body, res))
 app.put('/category', (req,res)=>updateCategory(req.body, res))
-app.delete('/category', (req,res)=>deleteCategory(req.body, res))
+app.delete('/category/:id', (req,res)=>deleteCategory(req.params.id, res))
 
 const server = http.createServer(app).listen(3000, () => {
 	console.log(`Listening at http://localhost:3000`);
