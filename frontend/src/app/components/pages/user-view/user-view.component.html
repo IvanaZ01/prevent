@@ -1,0 +1,23 @@
+<app-navbar 
+[nav-links]="userNav"
+(toggledNav)="setNavState($event)"
+></app-navbar>
+
+<div class="content" [class.all-the-way]="!isNavOpen">
+    <div class="search">
+        <input 
+        type="text" class="search-bar"
+        placeholder="Search articles..."
+        >
+        <div>
+            <i class="bi bi-search"></i>
+        </div>
+    </div>
+
+    <div class="data-display">
+        <app-article-card 
+        *ngFor="let article of articles"
+        [model]="article"></app-article-card>
+    </div>
+
+</div>

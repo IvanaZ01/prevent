@@ -18,6 +18,8 @@ import { NewPasswordComponent } from './components/pages/new-password/new-passwo
 import { NavbarComponent } from './components/navbar/navbar.component';
 import { AdminComponent } from './components/pages/admin-manage/admin-manage.component';
 import { AdminViewComponent } from './components/pages/admin-view/admin-view.component';
+import { UserViewComponent } from './components/pages/user-view/user-view.component';
+import { ArticleCardComponent } from './components/article-card/article-card.component';
 
 const notifierDefaultOptions: NotifierOptions = {
   position: {
@@ -61,7 +63,7 @@ const notifierDefaultOptions: NotifierOptions = {
 };
 
 @NgModule({
-  declarations: [AppComponent, LoginComponent, RegisterComponent, ResetPasswordComponent, NewPasswordComponent, NavbarComponent, AdminComponent, AdminViewComponent],
+  declarations: [AppComponent, LoginComponent, RegisterComponent, ResetPasswordComponent, NewPasswordComponent, NavbarComponent, AdminComponent, AdminViewComponent, UserViewComponent, ArticleCardComponent],
   imports: [
     BrowserModule,
     HttpClientModule,

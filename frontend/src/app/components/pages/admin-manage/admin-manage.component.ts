@@ -10,6 +10,10 @@ import { NotificationService } from 'src/app/services/notification.service';
 })
 export class AdminComponent implements OnInit {
   isNavOpen = true;
+  adminNav = [
+    {name:'View all', link: '/admin'},
+    {name:'Add new', link: '/admin/manage'}
+]
   constructor(
     private Ahttp: ArticleService, 
     private _notificationService: NotificationService,

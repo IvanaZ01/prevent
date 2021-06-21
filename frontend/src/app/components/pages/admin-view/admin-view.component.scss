@@ -1,9 +1,5 @@
 @import "./../../../../shared/variables";
 
-@mixin trans-ease {
-  transition: all 150ms ease-in-out;
-}
-
 .content {
   position: absolute;
   right: 70px;

@@ -1,0 +1,33 @@
+@import "../../../shared/variables";
+
+.card{
+    position: relative;
+    height: 100%;
+}
+
+.name{
+    padding: .5em 1em;
+    border-bottom: 1px solid $medium-gray;
+}
+
+.desc{
+    padding: 1em;
+}
+
+.price{
+    position: absolute;
+    bottom: 1em;
+    right: 1em;
+    text-align: right;
+    color: $success;
+    font-size: 1.2rem;
+    font-weight: bold;
+}
+.discount{
+    position: absolute;
+    top: .8em;
+    right: 1em;
+    color: $red;
+    font-size: 1.2rem;
+    transform: rotate(20deg);
+}

@@ -1,4 +1,4 @@
-import { Component, OnInit, Output, EventEmitter } from '@angular/core';
+import { Component, OnInit, Output, EventEmitter, Input } from '@angular/core';
 
 @Component({
   selector: 'app-navbar',
@@ -8,13 +8,10 @@ import { Component, OnInit, Output, EventEmitter } from '@angular/core';
 export class NavbarComponent implements OnInit {
   navOpen = true;
   accOptionsOpen = false;
+  @Input('nav-links') items:any
   @Output() toggledNav: EventEmitter<boolean> =   new EventEmitter();
-
-  items = [
-    {name: 'Home', link:'/'},
-    {name: 'Add new', link:'/admin/manage'},
-    {name: 'View all', link:'/admin'},
-];
+  
+  
 
   constructor() {}
 

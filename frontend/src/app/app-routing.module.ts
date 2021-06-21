@@ -6,6 +6,7 @@ import { LoginComponent } from './components/pages/login/login.component';
 import { NewPasswordComponent } from './components/pages/new-password/new-password.component';
 import { RegisterComponent } from './components/pages/register/register.component';
 import { ResetPasswordComponent } from './components/pages/reset-password/reset-password.component';
+import { UserViewComponent } from './components/pages/user-view/user-view.component';
 
 const routes: Routes = [
   {
@@ -25,6 +26,9 @@ const routes: Routes = [
   },
   {
     path:'admin', component: AdminViewComponent
+  },
+  {
+    path:'user', component:UserViewComponent
   }
 ];
 

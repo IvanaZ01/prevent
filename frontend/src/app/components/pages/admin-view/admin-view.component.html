@@ -1,4 +1,7 @@
-<app-navbar (toggledNav)="setNavState($event)"></app-navbar>
+<app-navbar 
+[nav-links]="adminNav"
+(toggledNav)="setNavState($event)"
+></app-navbar>
 
 <div class="content" [class.all-the-way]="!isNavOpen">
 

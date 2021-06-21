@@ -16,6 +16,10 @@ export class AdminViewComponent implements OnInit {
   categories: any;
   active = 'users';
   modalActive = false;
+  adminNav = [
+    {name:'View all', link: '/admin'},
+    {name:'Add new', link: '/admin/manage'}
+]
 
   constructor(
     private _notificationService: NotificationService,
