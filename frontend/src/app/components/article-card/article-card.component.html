@@ -1,6 +1,10 @@
 <div class="card">
-    <span *ngIf='model.discount != 0' class="discount">-{{model.discount }}%</span>
-    <h2 class="name">{{model.name | titlecase}}</h2>
-    <p class="desc">{{model.description}}</p>
-    <p class="price">{{model.price | currency}}</p>
+  <h2 class="name">{{ model.name | titlecase }}</h2>
+  <p class="desc">{{ model.description }}</p>
+  <p class="price">{{ model.price | currency }}</p>
+  <div 
+  *ngIf="model.discount != 0"
+  class="discount-label">
+    <p  class="discount">-{{ model.discount }}%</p>
+  </div>
 </div>

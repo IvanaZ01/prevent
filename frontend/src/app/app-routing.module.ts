@@ -28,7 +28,7 @@ const routes: Routes = [
     path:'admin', component: AdminViewComponent
   },
   {
-    path:'user', component:UserViewComponent
+    path:'', component:UserViewComponent
   }
 ];
 

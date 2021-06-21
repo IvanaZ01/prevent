@@ -8,6 +8,7 @@ const app = express();
 //user actions
 const getAllUsers = require('./routes/user/getAllUsers');
 const createUser = require('./routes/user/createUser');
+const updateUser = require('./routes/user/updateUser');
 
 //article actions
 const createArticle = require('./routes/article/createArticle')
@@ -29,6 +30,7 @@ app.use(cors());
 //user route requests
 app.get('/user', (req, res) => getAllUsers(res));
 app.post('/user', (req, res) => createUser(req.body, res));
+app.put('/user/:id', (req,res)=>updateUser(req.params.id, req.body, res))
 
 //article route requests 
 app.get('/article', (req, res)=>getAllArticles(res))

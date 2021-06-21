@@ -17,8 +17,9 @@ export class AdminViewComponent implements OnInit {
   active = 'users';
   modalActive = false;
   adminNav = [
+    {name:'Home', link: '/'},
     {name:'View all', link: '/admin'},
-    {name:'Add new', link: '/admin/manage'}
+    {name:'Add new', link: '/admin/manage'},
 ]
 
   constructor(

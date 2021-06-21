@@ -67,6 +67,17 @@
       minlength="6"
     />
 
+    <input
+      class="text-input"
+      type="password"
+      ngModel
+      name="repeatPassword"
+      #repeatPassword="ngModel"
+      placeholder="Repeat password"
+      required
+      minlength="6"
+    />
+
     <!-- validation for password -->
 
       <div *ngIf="!password.touched && password.errors?.minlength" class="error-alert">
@@ -79,6 +90,12 @@
     *ngIf="notFilled" 
     class="error-alert">
       Please fill all the required fields.
+    </div>
+
+    <div 
+    *ngIf="passwordsDontMatch" 
+    class="error-alert">
+      Passwords do not match.
     </div>
 
     <br />

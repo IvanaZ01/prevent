@@ -19,6 +19,7 @@ export class RegisterComponent implements OnInit {
     },
   ];
   notFilled = false;
+  passwordsDontMatch = false;
 
   constructor(
     private _notificationService: NotificationService,
@@ -27,11 +28,15 @@ export class RegisterComponent implements OnInit {
 
   ngOnInit(): void {}
 
-  validate(valid: boolean | null, value: object) {
+  validate(valid: boolean | null, value: any) {
     if (!valid) {
       this.notFilled = true;
-    } else {
+    } else if(value.password !== value.repeatPassword){
+      console.log(value)
+      this.passwordsDontMatch = true;
+    }else{
       this.register(value);
+      this.passwordsDontMatch = false
     }
   }
 
