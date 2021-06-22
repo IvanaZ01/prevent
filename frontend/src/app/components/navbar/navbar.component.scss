@@ -152,3 +152,8 @@ font-size: 2em;
 .navClosed {
   left: -300px;
 }
+
+.active{
+  background-color: $red;
+  color: $white;
+}

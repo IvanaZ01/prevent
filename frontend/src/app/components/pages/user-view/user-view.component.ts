@@ -10,7 +10,7 @@ import { NotificationService } from 'src/app/services/notification.service';
 export class UserViewComponent implements OnInit {
 
   isNavOpen = true;
-  userNav = [{name: 'Home', link: '/user'}]
+  userNav = [{name: 'Home', link: '/user', active: true}]
   articles:any;
 
   constructor(

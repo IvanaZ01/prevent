@@ -29,7 +29,9 @@
     <li 
     *ngFor="let item of items" 
     routerLink="{{item.link}}"
-    class="list_item">
+    class="list_item"
+    [class.active]="item.active"
+    >
         {{ item.name }}
     </li>
   </ul>

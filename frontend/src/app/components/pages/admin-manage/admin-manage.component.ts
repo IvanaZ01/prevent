@@ -13,7 +13,7 @@ export class AdminComponent implements OnInit {
   adminNav = [
     {name:'Home', link: '/'},
     {name:'View all', link: '/admin'},
-    {name:'Add new', link: '/admin/manage'}
+    {name:'Add new', link: '/admin/manage', active: true}
 ]
   constructor(
     private Ahttp: ArticleService, 
