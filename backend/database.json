@@ -3,8 +3,8 @@
 	"development": {
 		"driver": "mysql",
 		"host": "localhost",
-		"user": "ivana",
-		"password": "123456",
+		"user": "prevent",
+		"password": "prevent",
 		"database": "prevent",
 		"multipleStatements": true
 	}

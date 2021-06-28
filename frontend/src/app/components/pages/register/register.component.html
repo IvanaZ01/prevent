@@ -1,112 +1,92 @@
-<div class="container">
-  <h1 class="login-heading margin1">Register</h1>
-  <form #f="ngForm">
-    <select ngModel class="text-input" name="role" #role="ngModel" required>
-      <option value="" disabled selected>Select the role</option>
-      <option *ngFor="let role of roles" [value]="role.value">
-        {{ role.label }}
-      </option>
-    </select>
+<div class="register-wrapper" fxLayout="row" fxLayoutAlign="center center">
+  <mat-card class="box mat-elevation-z5">
+    
+    <mat-card-header>
+      <mat-card-title>Register</mat-card-title>
+    </mat-card-header>
 
-    <input
-      class="text-input"
-      type="text"
-      ngModel
-      name="name"
-      #name="ngModel"
-      placeholder="Name"
-      required
-      minlength="3"
-    />
+    <form [formGroup]="registerForm" (ngSubmit)="onSubmit()">
+      <mat-card-content>
+        <mat-form-field appearance="outline">
+          <mat-label>Select an role</mat-label>
+          <mat-select formControlName="role">
+            <mat-option value="administrator">Administrator</mat-option>
+            <mat-option value="user">User</mat-option>
+          </mat-select>
 
-    <div *ngIf="name.errors?.minlength && name.touched" class="error-alert">
-      Minimum length for name is {{ name.errors?.minlength?.requiredLength }}
-    </div>
+          <mat-error *ngIf="handleError('role', 'required')">
+            Role is <strong>required</strong>.
+          </mat-error>
+        </mat-form-field>
 
+        <mat-form-field appearance="outline" class="full-width-input">
+          <mat-label>Name</mat-label>
+          <input matInput formControlName="name" placeholder="Name">
+    
+          <mat-error *ngIf="handleError('name', 'required')">
+            Name is <strong>required</strong>.
+          </mat-error>
+          <mat-error *ngIf="handleError('name', 'minlength')">
+            Name must be at least <strong>4 characters</strong>.
+          </mat-error>
+        </mat-form-field>
 
-    <input
-      class="text-input"
-      type="text"
-      ngModel
-      name="username"
-      #username="ngModel"
-      placeholder="Username"
-      required
-    />
+        <mat-form-field appearance="outline" class="full-width-input">
+          <mat-label>Username</mat-label>
+          <input matInput formControlName="username" placeholder="Username">
+    
+          <mat-error *ngIf="handleError('username', 'required')">
+            Username is <strong>required</strong>.
+          </mat-error>
+          <mat-error *ngIf="handleError('username', 'minlength')">
+            Username must be at least <strong>4 characters</strong>.
+          </mat-error>
+        </mat-form-field>
 
-    <!-- validation for username -->
-    <div [hidden]="!username.valid && !username.touched">
-      <div *ngIf="username.errors?.required" class="error-alert">
-        Username is required.
-      </div>
-    </div>
+        <mat-form-field appearance="outline" class="full-width-input">
+          <mat-label>Email</mat-label>
+          <input matInput formControlName="email" placeholder="Email">
+    
+          <mat-error *ngIf="handleError('email', 'required')">
+            Email is <strong>required</strong>.
+          </mat-error>
+          <mat-error *ngIf="handleError('email', 'email')">
+            Email must be <strong>valid email</strong>.
+          </mat-error>
+        </mat-form-field>
+    
+        <mat-form-field appearance="outline" class="full-width-input">
+          <mat-label>Password</mat-label>
+          <input matInput formControlName="password" placeholder="Password" type="password">
+    
+          <mat-error *ngIf="handleError('password', 'required')">
+            Password is <strong>required</strong>.
+          </mat-error>
+          <mat-error *ngIf="handleError('password', 'minlength')">
+            Password must be at least <strong>8 characters</strong> long.
+          </mat-error>
+        </mat-form-field>
 
-    <input
-      class="text-input"
-      type="email"
-      ngModel
-      name="email"
-      #email="ngModel"
-      placeholder="Email"
-      required
-    />
+        <mat-form-field appearance="outline" class="full-width-input">
+          <mat-label>Password repeat</mat-label>
+          <input matInput formControlName="passwordRepeat" placeholder="Password repeat" type="password">
+    
+          <mat-error *ngIf="handleError('passwordRepeat', 'required')">
+            Password repeat is <strong>required</strong>.
+          </mat-error>
+          <mat-error *ngIf="handleError('passwordRepeat', 'mustMatch')">
+            Passwords must <strong>match</strong>.
+          </mat-error>
+        </mat-form-field>
+    
+        <button mat-raised-button color="primary" type="submit" [disabled]="!registerForm.valid">Register</button>
+      </mat-card-content>
+    </form>
 
-    <!-- validation for email -->
-    <div *ngIf="email.touched && email.errors?.required" class="error-alert">
-      Email is required.
-    </div>
+    <mat-card-footer>
+      <button mat-raised-button color="primary" routerLink="/reset-password-request">Already have account?</button>
+      <button mat-raised-button color="primary" routerLink="/login">Forgot password?</button>
+    </mat-card-footer>
 
-    <input
-      class="text-input"
-      type="password"
-      ngModel
-      name="password"
-      #password="ngModel"
-      placeholder="Password"
-      required
-      minlength="6"
-    />
-
-    <input
-      class="text-input"
-      type="password"
-      ngModel
-      name="repeatPassword"
-      #repeatPassword="ngModel"
-      placeholder="Repeat password"
-      required
-      minlength="6"
-    />
-
-    <!-- validation for password -->
-
-      <div *ngIf="!password.touched && password.errors?.minlength" class="error-alert">
-        Minimum length for password is
-        {{ password.errors?.minlength.requiredLength }}
-      </div>
-
-
-    <div 
-    *ngIf="notFilled" 
-    class="error-alert">
-      Please fill all the required fields.
-    </div>
-
-    <div 
-    *ngIf="passwordsDontMatch" 
-    class="error-alert">
-      Passwords do not match.
-    </div>
-
-    <br />
-    <button
-      (click)="validate(f.valid, f.value)"
-      class="btn sign-btn margin1"
-    >
-
-
-      SIGNUP
-    </button>
-    <button routerLink="/login" class="btn login-btn">LOGIN</button>
-  </form>
+  </mat-card>
 </div>

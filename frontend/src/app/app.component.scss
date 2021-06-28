@@ -1,1 +1,10 @@
 @import "./../shared/variables";
+
+.spacer {
+  flex: 1 1 auto;
+}
+
+mat-drawer-container { 
+  flex: 1 1 auto;
+  min-height: 100vh;
+}

@@ -1,49 +1,53 @@
-<div class="container">
-  <h1 class="login-heading margin1">Login</h1>
-  <form #f="ngForm">
-    <div class="input-holder margin1">
-      <span class="login-icon"><i class="bi bi-person"></i></span>
-      <input
-      ngModel
-      #username="ngModel"
-      class="text-input"
-      type="text"
-      name="username"
-      placeholder="Username"
-      required
-      />
-      <br />
-    </div>
+<div class="login-wrapper" fxLayout="row" fxLayoutAlign="center center">
+  <mat-card class="box mat-elevation-z5">
     
-    <div class="input-holder">
-      <span class="login-icon"><i class="bi bi-key"></i></span>
-      <input
-      ngModel
-      #password="ngModel"
-      class="text-input"
-      type="password"
-      name="password"
-      placeholder="Password"
-      required
-      />
-    </div>
-    <br />
+    <mat-card-header>
+      <mat-card-title>Log in</mat-card-title>
+    </mat-card-header>
+
+    <form [formGroup]="loginForm" (ngSubmit)="onSubmit()">
+      <mat-card-content>
+        <mat-form-field appearance="outline" class="full-width-input">
+          <mat-label>Username</mat-label>
+          <input matInput formControlName="username" placeholder="Username">
+          <mat-icon matSuffix>person</mat-icon>
     
-      <div *ngIf="username.errors?.required && username.touched" class="error-alert">
-        Username is required.
-      </div>
-      <div *ngIf="password.errors?.required && password.touched" class="error-alert">
-       Password is required
-      </div>
+          <mat-error *ngIf="handleError('username', 'required')">
+            Username is <strong>required</strong>.
+          </mat-error>
+          <mat-error *ngIf="handleError('username', 'minlength')">
+            Username must be at least <strong>4 characters</strong>.
+          </mat-error>
+        </mat-form-field>
+    
+        <mat-form-field appearance="outline" class="full-width-input">
+          <mat-label>Password</mat-label>
+          <input matInput formControlName="password" placeholder="Password" type="password">
+          <mat-icon matSuffix>password</mat-icon>
+          <mat-hint>Don't give your password to strangers.</mat-hint>
+    
+          <mat-error *ngIf="handleError('password', 'required')">
+            Password is <strong>required</strong>.
+          </mat-error>
+          <mat-error *ngIf="handleError('password', 'minlength')">
+            Password must be at least <strong>8 characters</strong> long.
+          </mat-error>
+        </mat-form-field>
 
+        <mar-form-field class="remember-me-checkbox">
+          <mat-slide-toggle formControlName="rememberMe">Remember me</mat-slide-toggle>
+        </mar-form-field>
 
-    <a routerLink="/reset-password" class="link margin1">Forgot password?</a>
-    <button 
-    [disabled]="!f.valid"
-    class="btn login-btn margin1" 
-    (click)="login(f.value)">
-    LOGIN
-  </button>
-    <button routerLink="/register" class="btn sign-btn">SIGNUP</button>
-  </form>
+        <br>
+
+        <button mat-raised-button color="primary" type="submit" [disabled]="!loginForm.valid">Log in</button>
+      </mat-card-content>
+    </form>
+
+    <mat-card-footer>
+      <button mat-raised-button color="primary" routerLink="/reset-password-request">Forgot password?</button>
+      <button mat-raised-button color="primary" routerLink="/register">Don't have account?</button>
+    </mat-card-footer>
+
+  </mat-card>
 </div>

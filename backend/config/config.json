@@ -1,8 +1,8 @@
 {
 	"defaultEnv": "development",
 	"development": {
-		"username": "ivana",
-		"password": "123456",
+		"username": "prevent",
+		"password": "prevent",
 		"database": "prevent",
 		"host": "localhost",
 		"dialect": "mysql"

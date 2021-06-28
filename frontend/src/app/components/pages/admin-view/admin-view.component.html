@@ -1,214 +1,133 @@
-<app-navbar 
-[nav-links]="adminNav"
-(toggledNav)="setNavState($event)"
-></app-navbar>
+<div class="content">
 
-<div class="content" [class.all-the-way]="!isNavOpen">
+  <ul class="tabs">
+    <li class="tabs-item" [class.item-active]="active === 'users'" (click)="getUsers()">
+      Users
+    </li>
+    <li class="tabs-item" [class.item-active]="active === 'articles'" (click)="getArticles()">
+      Articles
+    </li>
+    <li class="tabs-item" [class.item-active]="active === 'categories'" (click)="getCategories()">
+      Categories
+    </li>
+  </ul>
 
-        <ul class="tabs">
-            <li 
-            class="tabs-item" 
-            [class.item-active]="active === 'users'"
-            (click)="getUsers()"
-            >
-                Users 
-            </li>
-            <li 
-            class="tabs-item"
-            [class.item-active]="active === 'articles'"
-            (click)="getArticles()"
-            >
-                Articles
-            </li>
-            <li 
-            class="tabs-item"
-            [class.item-active]="active === 'categories'"
-            (click)="getCategories()"
-            >
-                Categories
-            </li>
-          </ul>
+  <div class="data-display">
+    <!-- users table -->
+    <table [hidden]="active !== 'users'">
+      <tr class="t-header">
+        <td>Name</td>
+        <td>Username</td>
+        <td>Email</td>
+        <td>Actions</td>
+      </tr>
 
-    <div class="data-display">
-        <!-- users table -->
-        <table [hidden]="active !== 'users'">
-            <tr class="t-header">
-                <td>Name</td>
-                <td>Username</td>
-                <td>Email</td>
-                <td>Actions</td>
-            </tr>
+      <tr class="row" *ngFor="let user of users">
+        <td>{{user.name}}</td>
+        <td>{{user.username}}</td>
+        <td>{{user.email}}</td>
+        <td>
+          <i class="bi bi-x-circle"></i>
+        </td>
+      </tr>
+    </table>
 
-            <tr class="row" *ngFor="let user of users">
-                <td>{{user.name}}</td>
-                <td>{{user.username}}</td>
-                <td>{{user.email}}</td>
-                <td>
-                    <i class="bi bi-x-circle"></i>
-                </td>
-            </tr>
-        </table>
+    <!-- articles table -->
+    <table class="t-art" [hidden]="active !== 'articles'">
+      <tr class="t-header">
+        <td>Name</td>
+        <td>Description</td>
+        <td>Price</td>
+        <td>Discount</td>
+        <td>Actions</td>
+      </tr>
 
-        <!-- articles table -->
-        <table class="t-art" [hidden]="active !== 'articles'">
-            <tr class="t-header">
-                <td>Name</td>
-                <td>Description</td>
-                <td>Price</td>
-                <td>Discount</td>
-                <td>Actions</td>
-            </tr>
+      <tr class="row" *ngFor="let article of articles">
+        <td>{{article.name}}</td>
+        <td>{{article.description}}</td>
+        <td>{{article.price}}</td>
+        <td>{{article.discount}}</td>
+        <td>
+          <i (click)="openModalForArticle(article)" class="bi bi-pencil-square"></i>
+          <i (click)="deleteFunc(article.id)" class="bi bi-trash"></i>
+        </td>
+      </tr>
+    </table>
 
-            <tr class="row" *ngFor="let article of articles">
-                <td>{{article.name}}</td>
-                <td>{{article.description}}</td>
-                <td>{{article.price}}</td>
-                <td>{{article.discount}}</td>
-                <td>
-                    <i 
-                    (click)="openModalForArticle(article)"
-                    class="bi bi-pencil-square"></i>
-                    <i 
-                    (click)="deleteFunc(article.id)"
-                    class="bi bi-trash"></i>
-                </td>
-            </tr>
-        </table>
+    <!-- categories table -->
+    <table class="t-cat" [hidden]="active !== 'categories'">
+      <tr class="t-header">
+        <td>Name</td>
+        <td>Description</td>
+        <td>Actions</td>
+      </tr>
 
-        <!-- categories table -->
-        <table class="t-cat" [hidden]="active !== 'categories'">
-            <tr class="t-header">
-                <td>Name</td>
-                <td>Description</td>
-                <td>Actions</td>
-            </tr>
-
-            <tr class="row" *ngFor="let category of categories">
-                <td>{{category.name}}</td>
-                <td>{{category.description}}</td>
-                <td>
-                    <i 
-                    (click)="openModalForCategory(category)"
-                    class="bi bi-pencil-square"></i>
-                    <i
-                    (click)="deleteFunc(category.id)" 
-                    class="bi bi-trash"></i>
-                </td>
-            </tr>
-        </table>
-    </div>
+      <tr class="row" *ngFor="let category of categories">
+        <td>{{category.name}}</td>
+        <td>{{category.description}}</td>
+        <td>
+          <i (click)="openModalForCategory(category)" class="bi bi-pencil-square"></i>
+          <i (click)="deleteFunc(category.id)" class="bi bi-trash"></i>
+        </td>
+      </tr>
+    </table>
+  </div>
 </div>
 
 <div class="darken" [hidden]="!modalActive">
-    <div 
-    *ngIf="active === 'articles'"
-    [class.modalOpen]="modalActive"
-    class="modal">
-        <div class="modal-heading">
-            <h2>Edit Article</h2>
-            <i 
-            (click)="closeModal()"
-            class="bi bi-x-lg"></i>
-        </div>
-        <form #fA="ngForm">
-              <div class="label-input-pairs">
-                <label for="name"
-                  >Article name:
-                </label>
-                 <input 
-                 ngModel 
-                 #name="ngModel" 
-                 [(ngModel)]="articleModel.name"
-                 type="text" 
-                 name="name" 
-                 required/>
-              </div>
-        
-              <div class="label-input-pairs">
-                <label for="price"
-                  >Price:
-                </label>
-                <input 
-                ngModel 
-                #price="ngModel" 
-                [(ngModel)]="articleModel.price"
-                type="number" 
-                name="price" 
-                required
-                />
-              </div>
-      
-              <div class="label-input-pairs">
-                <label for="discount">
-                  Discount:
-                </label>
-                <input 
-                ngModel 
-                name="discount" 
-                #discount="ngModel" 
-                [(ngModel)]="articleModel.discount"
-                type="number" 
-                />
-              </div>
-      
-            <label class="desc-label" for="description">Description: </label>
-      
-            <textarea
-              ngModel
-              #description="ngModel"
-              [(ngModel)]="articleModel.description"
-              name="description"
-              cols="20"
-              rows="7"
-            >
-            </textarea>
-            <button 
-            [disabled]="!fA.valid"
-            (click)="updateArticle(articleModel.id, fA.value)"
-            class="add-btn">ADD</button>
-          </form>
+  <div *ngIf="active === 'articles'" [class.modalOpen]="modalActive" class="modal">
+    <div class="modal-heading">
+      <h2>Edit Article</h2>
+      <i (click)="closeModal()" class="bi bi-x-lg"></i>
     </div>
+    <form #fA="ngForm">
+      <div class="label-input-pairs">
+        <label for="name">Article name:
+        </label>
+        <input ngModel #name="ngModel" [(ngModel)]="articleModel.name" type="text" name="name" required />
+      </div>
 
-    <div 
-    *ngIf="active === 'categories'"
-    [class.modalOpen]="modalActive"
-    class="modal">
-        <div class="modal-heading">
-            <h2>Edit Category</h2>
-            <i 
-            (click)="closeModal()"
-            class="bi bi-x-lg"></i>
-        </div>
-        <form #fC="ngForm">
-              <div class="label-input-pairs">
-                <label for="name"
-                  >Category name:
-                </label>
-                 <input 
-                 ngModel 
-                 #name="ngModel" 
-                 [(ngModel)]="categoryModel.name"
-                 type="text" 
-                 name="name" 
-                 required/>
-              </div>
-      
-            <label class="desc-label" for="description">Description: </label>
-      
-            <textarea
-              ngModel
-              #description="ngModel"
-              [(ngModel)]="categoryModel.description"
-              name="description"
-              cols="20"
-              rows="7"
-            >
+      <div class="label-input-pairs">
+        <label for="price">Price:
+        </label>
+        <input ngModel #price="ngModel" [(ngModel)]="articleModel.price" type="number" name="price" required />
+      </div>
+
+      <div class="label-input-pairs">
+        <label for="discount">
+          Discount:
+        </label>
+        <input ngModel name="discount" #discount="ngModel" [(ngModel)]="articleModel.discount" type="number" />
+      </div>
+
+      <label class="desc-label" for="description">Description: </label>
+
+      <textarea ngModel #description="ngModel" [(ngModel)]="articleModel.description" name="description" cols="20"
+        rows="7">
             </textarea>
-            <button 
-            [disabled]="!fC.valid"
-            (click)="updateCategory(categoryModel.id, fC.value)"
-            class="add-btn">ADD</button>
-          </form>
+      <button [disabled]="!fA.valid" (click)="updateArticle(articleModel.id, fA.value)" class="add-btn">ADD</button>
+    </form>
+  </div>
+
+  <div *ngIf="active === 'categories'" [class.modalOpen]="modalActive" class="modal">
+    <div class="modal-heading">
+      <h2>Edit Category</h2>
+      <i (click)="closeModal()" class="bi bi-x-lg"></i>
     </div>
-    
+    <form #fC="ngForm">
+      <div class="label-input-pairs">
+        <label for="name">Category name:
+        </label>
+        <input ngModel #name="ngModel" [(ngModel)]="categoryModel.name" type="text" name="name" required />
+      </div>
+
+      <label class="desc-label" for="description">Description: </label>
+
+      <textarea ngModel #description="ngModel" [(ngModel)]="categoryModel.description" name="description" cols="20"
+        rows="7">
+            </textarea>
+      <button [disabled]="!fC.valid" (click)="updateCategory(categoryModel.id, fC.value)" class="add-btn">ADD</button>
+    </form>
+  </div>
+
 </div>

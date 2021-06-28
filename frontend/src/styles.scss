@@ -1,16 +1,21 @@
-/* You can add global styles to this file, and also import other style files */
-@import "~bootstrap-icons/font/bootstrap-icons.css";
-@import "./shared/variables";
-@import "~angular-notifier/styles";
-
-* {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
+html,
+body {
+  height: 100%;
 }
 
 body {
-  background-color: $medium-gray;
-  font-family: sans-serif;
-  color: $black;
+  margin: 0;
+  font-family: Roboto, "Helvetica Neue", sans-serif;
+}
+
+.snackbar-container.success {
+  background-color: green;
+}
+
+.snackbar-container.error {
+  background-color: red;
+}
+
+.snackbar-container.warning {
+  background-color: orange;
 }

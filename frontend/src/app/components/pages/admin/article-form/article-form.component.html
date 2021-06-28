@@ -1,0 +1,57 @@
+<h2 mat-dialog-title>{{ dialogData.title }}</h2>
+<mat-dialog-content>
+  <form [formGroup]="articleForm" (ngSubmit)="onSubmit()">
+    <mat-form-field appearance="outline" class="full-width-input">
+      <mat-label>Name</mat-label>
+      <input matInput formControlName="name" placeholder="Name">
+
+      <mat-error *ngIf="handleError('name', 'required')">
+        Name is <strong>required</strong>.
+      </mat-error>
+      <mat-error *ngIf="handleError('name', 'minlength')">
+        Name must be at least <strong>4 characters</strong>.
+      </mat-error>
+    </mat-form-field>
+
+    <mat-form-field appearance="outline" class="full-width-input">
+      <mat-label>Price</mat-label>
+      <input matInput formControlName="price" placeholder="Price" type="number">
+
+      <mat-error *ngIf="handleError('price', 'required')">
+        Price is <strong>required</strong>.
+      </mat-error>
+      <mat-error *ngIf="handleError('price', 'min')">
+        Price must be <strong>greater than 0</strong>.
+      </mat-error>
+    </mat-form-field>
+
+    <mat-form-field appearance="outline" class="full-width-input">
+      <mat-label>Discount</mat-label>
+      <input matInput formControlName="discount" placeholder="Discount" type="number">
+
+      <mat-error *ngIf="handleError('discount', 'required')">
+        Discount is <strong>required</strong>.
+      </mat-error>
+      <mat-error *ngIf="handleError('discount', 'min')">
+        Discount must be <strong>greater than 0</strong>.
+      </mat-error>
+      <mat-error *ngIf="handleError('discount', 'max')">
+        Discount must be <strong>lower than 100</strong>.
+      </mat-error>
+    </mat-form-field>
+
+    <mat-form-field appearance="outline" class="full-width-input">
+      <mat-label>Description</mat-label>
+      <input matInput formControlName="description" placeholder="Description">
+
+      <mat-error *ngIf="handleError('description', 'required')">
+        Description is <strong>required</strong>.
+      </mat-error>
+    </mat-form-field>
+
+    <mat-dialog-actions>
+      <button mat-raised-button color="warn" mat-dialog-close>Cancel</button>
+      <button mat-raised-button color="primary" type="submit" [disabled]="!articleForm.valid">Save</button>
+    </mat-dialog-actions>
+  </form>
+</mat-dialog-content>

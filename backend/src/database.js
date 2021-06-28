@@ -1,12 +1,12 @@
 const { Sequelize } = require('sequelize');
 
-const dbHost = 'localhost';
-const dbDatabase = 'prevent';
-const dbUsername = 'ivana';
-const dbPassword = '123456';
-const dbDialect = 'mysql';
+const dbHost = process.env.DB_HOST;
+const dbDatabase = process.env.DB_DATABASE;
+const dbUser = process.env.DB_USER;
+const dbPassword = process.env.DB_PASSWORD;
+const dbDialect = process.env.DB_DIALECT;
 
-const sequelize = new Sequelize(dbDatabase, dbUsername, dbPassword, {
+const sequelize = new Sequelize(dbDatabase, dbUser, dbPassword, {
 	host: dbHost,
 	dialect: dbDialect,
 });
