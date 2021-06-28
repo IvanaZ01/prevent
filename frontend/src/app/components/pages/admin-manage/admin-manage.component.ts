@@ -29,7 +29,7 @@ export class AdminComponent implements OnInit {
 
   validateArticle(valid:boolean | null, fa:any, form:object){
     if(!valid){
-      console.log(fa);
+
     }else{
       this.addArticle(form)
     }
@@ -37,7 +37,7 @@ export class AdminComponent implements OnInit {
 
   validateCategory(valid:boolean | null, fc:any, form:object){
     if(!valid){
-      console.log(fc);
+      
     }else{
       this.addCategory(form)
     }

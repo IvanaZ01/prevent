@@ -1,12 +1,15 @@
 import { HttpClient } from '@angular/common/http';
 import { Inject, Injectable } from '@angular/core';
-import { NotifierService } from 'angular-notifier';
 
 @Injectable({
   providedIn: 'root',
 })
 export class ApiService {
-  constructor(@Inject(String) private url: string, private _http: HttpClient) {
+  constructor(
+    @Inject(String) private url: string,
+    public _http: HttpClient
+  ) {
+
   }
 
   getAll(){
@@ -14,7 +17,6 @@ export class ApiService {
   }
 
   create(resource:any){    
-    // console.log(resource);
     return this._http.post(this.url, resource)
   }
 
@@ -25,4 +27,5 @@ export class ApiService {
   delete(id:number|string){
     return this._http.delete(this.url +'/'+ id)
   }
+
 }

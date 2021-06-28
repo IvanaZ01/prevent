@@ -1,0 +1,14 @@
+<mat-card>
+  <mat-card-header>
+    <mat-title>Profile</mat-title>
+  </mat-card-header>
+
+  <p>ID: {{ user.id }}</p>
+  <p>Role: {{ user.role }}</p>
+  <p>Name: {{ user.name }}</p>
+  <p>Username: {{ user.username }}</p>
+  <p>Registered at: {{ user.createdAt }}</p>
+
+  User details:
+  <pre style="overflow-x: scroll;">{{ user | json}}</pre>
+</mat-card>

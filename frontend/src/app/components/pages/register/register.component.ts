@@ -1,6 +1,9 @@
 import { Component, OnInit } from '@angular/core';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { Router } from '@angular/router';
 import { UserService } from 'src/app/services/api/user.service';
 import { NotificationService } from 'src/app/services/notification.service';
+import { MustMatchValidator } from 'src/app/validators/must-match.validator';
 
 @Component({
   selector: 'app-register',
@@ -8,6 +11,17 @@ import { NotificationService } from 'src/app/services/notification.service';
   styleUrls: ['./register.component.scss'],
 })
 export class RegisterComponent implements OnInit {
+  registerForm: FormGroup = this._fb.group({
+    role: ['', [Validators.required]],
+    name: ['', [Validators.required, Validators.minLength(4)]],
+    username: ['', [Validators.required, Validators.minLength(4)]],
+    email: ['', [Validators.required, Validators.email]],
+    password: ['', [Validators.required, Validators.minLength(8)]],
+    passwordRepeat: ['', [Validators.required, Validators.minLength(8)]],
+  }, {
+    validator: MustMatchValidator('password', 'passwordRepeat'),
+  });
+
   roles = [
     {
       label: 'Administrator',
@@ -23,35 +37,33 @@ export class RegisterComponent implements OnInit {
 
   constructor(
     private _notificationService: NotificationService,
-    private _http: UserService
+    private _userService: UserService,
+    private _router: Router,
+    private _fb: FormBuilder,
   ) {}
 
   ngOnInit(): void {}
 
-  validate(valid: boolean | null, value: any) {
-    if (!valid) {
-      this.notFilled = true;
-    } else if(value.password !== value.repeatPassword){
-      console.log(value)
-      this.passwordsDontMatch = true;
-    }else{
-      this.register(value);
-      this.passwordsDontMatch = false
-    }
+  onSubmit() {
+    const { role, name, username, email, password } = this.registerForm.value;
+
+    this.register({ role, name, username, email, password });
   }
 
-  register(value: object) {
-    this._http.create(value).subscribe(
-      (success) => {
-        this._notificationService.success('success!');
+  register(user: any) {
+    this._userService.create(user).subscribe(
+      (success: any) => {
+        this._notificationService.success('You have successfully registered.');
+        this._router.navigate(['/login']);
       },
-      (error) => {
+      (error: any) => {
         this._notificationService.error(error);
       }
     );
   }
 
-  log(some: any) {
-    console.log(some);
+  handleError(control: string, error: string) {
+    return this.registerForm.controls[control].hasError(error);
   }
+
 }

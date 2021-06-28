@@ -1,34 +1,72 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
+
 import { AdminComponent } from './components/pages/admin-manage/admin-manage.component';
 import { AdminViewComponent } from './components/pages/admin-view/admin-view.component';
 import { LoginComponent } from './components/pages/login/login.component';
-import { NewPasswordComponent } from './components/pages/new-password/new-password.component';
+import { ProfileComponent } from './components/pages/profile/profile.component';
 import { RegisterComponent } from './components/pages/register/register.component';
+import { ResetPasswordRequestComponent } from './components/pages/reset-password-request/reset-password-request.component';
 import { ResetPasswordComponent } from './components/pages/reset-password/reset-password.component';
-import { UserViewComponent } from './components/pages/user-view/user-view.component';
+import { DashboardComponent } from './components/pages/dashboard/dashboard.component';
+
+import { AuthGuardService } from './services/auth-guard.service';
+import { UsersComponent } from './components/pages/admin/users/users.component';
+import { ArticlesComponent } from './components/pages/admin/articles/articles.component';
+import { CategoriesComponent } from './components/pages/admin/categories/categories.component';
+import { AuthGuardAdminService } from './services/auth-guard-admin.service';
 
 const routes: Routes = [
   {
-    path: 'login', component: LoginComponent
+    path: 'login',
+    component: LoginComponent,
   },
   {
-    path:'register', component: RegisterComponent
+    path:'register',
+    component: RegisterComponent,
   },
   {
-    path:'reset-password', component: ResetPasswordComponent
+    path:'reset-password-request',
+    component: ResetPasswordRequestComponent,
   },
   {
-    path:'new-password', component: NewPasswordComponent
+    path:'reset-password',
+    component: ResetPasswordComponent,
   },
   {
-    path:'admin/manage', component: AdminComponent
+    path:'profile',
+    component: ProfileComponent,
+    canActivate: [ AuthGuardService ],
   },
   {
-    path:'admin', component: AdminViewComponent
+    path:'users',
+    component: UsersComponent,
+    canActivate: [ AuthGuardAdminService ],
   },
   {
-    path:'', component:UserViewComponent
+    path:'articles',
+    component: ArticlesComponent,
+    canActivate: [ AuthGuardAdminService ],
+  },
+  {
+    path:'categories',
+    component: CategoriesComponent,
+    canActivate: [ AuthGuardAdminService ],
+  },
+  {
+    path:'admin/manage',
+    component: AdminComponent,
+    canActivate: [ AuthGuardService ],
+  },
+  {
+    path:'admin',
+    component: AdminViewComponent,
+    canActivate: [ AuthGuardService ],
+  },
+  {
+    path:'',
+    component: DashboardComponent,
+    canActivate: [ AuthGuardService ],
   }
 ];
 
