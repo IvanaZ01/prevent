@@ -12,6 +12,7 @@ Article.belongsToMany(Category, {
 
 Category.belongsToMany(Article, {
 	through: ArticleCategory,
+	as: 'categories',
 });
 
 module.exports = {

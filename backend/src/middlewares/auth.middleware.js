@@ -11,10 +11,8 @@ function authenticateToken(req, res, next) {
   }
 
   jwt.verify(token, process.env.JWT_SECRET, (err, user) => {
-    console.log({err});
-    console.log('Invalid token.');
-
     if (err) {
+      console.error({error});
       return res.status(400).send('JWT token is not valid.');
     }
 

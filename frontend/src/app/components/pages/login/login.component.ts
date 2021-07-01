@@ -34,14 +34,11 @@ export class LoginComponent implements OnInit {
   onSubmit() {
     const { username, password, rememberMe } = this.loginForm.value;
 
-    // TODO: implement remeber me functionality
-    console.log({rememberMe});
-    
-    this.login(username, password);
+    this.login(username, password, rememberMe);
   }
 
-  login(username: string, password: string){
-    this._auth.login(username, password).subscribe(
+  login(username: string, password: string, rememberMe: boolean = false){
+    this._auth.login(username, password, rememberMe).subscribe(
       (response: any) => {
         if (response.token) {
           localStorage.setItem('token', response.token);

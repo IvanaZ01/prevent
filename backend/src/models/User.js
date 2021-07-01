@@ -28,11 +28,9 @@ User.init(
 	},
 	{
 		sequelize,
-		modelName: 'User',
+		modelName: 'user',
 		timestamps: true,
 	}
 );
-
-console.log(User === sequelize.models.User);
 
 module.exports = User;

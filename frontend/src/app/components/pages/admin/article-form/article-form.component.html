@@ -49,8 +49,15 @@
       </mat-error>
     </mat-form-field>
 
+    <mat-form-field appearance="outline">
+      <mat-label>Categories</mat-label>
+      <mat-select formControlName="categories" multiple>
+        <mat-option *ngFor="let category of categoriesList" [value]="category.id">{{category.name}}</mat-option>
+      </mat-select>
+    </mat-form-field>
+
     <mat-dialog-actions>
-      <button mat-raised-button color="warn" mat-dialog-close>Cancel</button>
+      <button mat-raised-button color="warn" mat-dialog-close="close">Cancel</button>
       <button mat-raised-button color="primary" type="submit" [disabled]="!articleForm.valid">Save</button>
     </mat-dialog-actions>
   </form>
