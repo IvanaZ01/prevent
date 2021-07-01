@@ -18,8 +18,6 @@ import { LoginComponent } from './components/pages/login/login.component';
 import { RegisterComponent } from './components/pages/register/register.component';
 import { ResetPasswordRequestComponent } from './components/pages/reset-password-request/reset-password-request.component';
 import { ResetPasswordComponent } from './components/pages/reset-password/reset-password.component';
-import { AdminComponent } from './components/pages/admin-manage/admin-manage.component';
-import { AdminViewComponent } from './components/pages/admin-view/admin-view.component';
 import { DashboardComponent } from './components/pages/dashboard/dashboard.component';
 import { ArticleCardComponent } from './components/article-card/article-card.component';
 import { ProfileComponent } from './components/pages/profile/profile.component';
@@ -51,6 +49,7 @@ import { MatMenuModule } from '@angular/material/menu';
 import { MatCheckboxModule } from '@angular/material/checkbox';
 import { MatSlideToggleModule } from '@angular/material/slide-toggle';
 import { MatDialogModule } from '@angular/material/dialog';
+import {MatCardModule} from '@angular/material/card';
 
 import { MatSnackBarConfig, MatSnackBarModule, MAT_SNACK_BAR_DEFAULT_OPTIONS } from '@angular/material/snack-bar';
 
@@ -67,8 +66,6 @@ const matSnackbarDefaultConfig: MatSnackBarConfig = {
     RegisterComponent,
     ResetPasswordRequestComponent,
     ResetPasswordComponent,
-    AdminComponent,
-    AdminViewComponent,
     DashboardComponent,
     ArticleCardComponent,
     ProfileComponent,
@@ -111,6 +108,7 @@ const matSnackbarDefaultConfig: MatSnackBarConfig = {
     MatCheckboxModule,
     MatSlideToggleModule,
     MatDialogModule,
+    MatCardModule
   ],
   exports: [
     FlexLayoutModule,
@@ -137,6 +135,7 @@ const matSnackbarDefaultConfig: MatSnackBarConfig = {
     MatCheckboxModule,
     MatSlideToggleModule,
     MatDialogModule,
+    MatCardModule
   ],
   providers: [
     NotificationService,

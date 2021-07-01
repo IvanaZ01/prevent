@@ -2,13 +2,15 @@
   <mat-card-header>
     <mat-title>Profile</mat-title>
   </mat-card-header>
+  <mat-divider></mat-divider>
 
-  <p>ID: {{ user.id }}</p>
-  <p>Role: {{ user.role }}</p>
-  <p>Name: {{ user.name }}</p>
-  <p>Username: {{ user.username }}</p>
-  <p>Registered at: {{ user.createdAt }}</p>
-
-  User details:
-  <pre style="overflow-x: scroll;">{{ user | json}}</pre>
+  <mat-card-content>
+    <p> <b> ID:</b> {{ user.id }}</p>
+    <p><b>Role:</b> {{ user.role }}</p>
+    <p><b>Name:</b> {{ user.name }}</p>
+    <p><b>Username:</b> {{ user.username }}</p>
+    <p><b>Email:</b> {{ user.email }}</p>
+    <p><b>Registered at:</b> {{ user.createdAt }}</p>
+    
+  </mat-card-content>
 </mat-card>
