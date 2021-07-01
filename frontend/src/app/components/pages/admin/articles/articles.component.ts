@@ -13,7 +13,7 @@ import { ArticleFormComponent } from '../article-form/article-form.component';
 export class ArticlesComponent implements OnInit {
 
   articles: any = [];
-  displayedColumns: string[] = ['id', 'name', 'price', 'discount', 'actions'];
+  displayedColumns: string[] = ['id', 'name', 'price', 'discount', 'categories', 'actions'];
 
   constructor(
     private _dialog: MatDialog,
@@ -30,7 +30,20 @@ export class ArticlesComponent implements OnInit {
   loadArticleData() {
     this._articleService.getAll().subscribe(
       (success: any) => {
+
+        success.forEach((article: any, index: any) => {
+
+          let names: any = [];
+
+          article.categories.forEach((category: any) => {
+            names.push(category.name);
+          });
+
+          success[index].categoriesString = names.join(', ');
+        });
+
         this.articles = success;
+        console.log(this.articles);
       },
       (error: HttpErrorResponse) => {
         this._notificationService.error(error.error);
@@ -48,6 +61,10 @@ export class ArticlesComponent implements OnInit {
     });
 
     dialogRef.afterClosed().subscribe(result => {
+      if (result == 'close') {
+        return;
+      }
+
       result.id = article.id;
       this.updateArticle(result);
     });
@@ -61,8 +78,12 @@ export class ArticlesComponent implements OnInit {
       }
     });
 
-    dialogRef.afterClosed().subscribe(article => {
-      this.saveArticle(article);
+    dialogRef.afterClosed().subscribe(result => {
+      if (result == 'close') {
+        return;
+      }
+
+      this.saveArticle(result);
     });
   }
 

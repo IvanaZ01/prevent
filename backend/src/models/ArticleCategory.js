@@ -22,12 +22,10 @@ ArticleCategory.init(
 	},
 	{
 		sequelize,
-		modelName: 'ArticleCategory',
+		modelName: 'article_category',
 		timestamps: true,
 		tableName: 'ArticlesCategories',
 	}
 );
-
-console.log(ArticleCategory === sequelize.models.ArticleCategory);
 
 module.exports = ArticleCategory;

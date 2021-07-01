@@ -1,8 +1,8 @@
-const { DataTypes, Sequelize } = require('sequelize');
+const { DataTypes, Model } = require('sequelize');
 const sequelize = require('./../database');
 const Category = require('./Category');
 
-class Article extends Sequelize.Model {}
+class Article extends Model {}
 
 Article.init(
 	{
@@ -25,11 +25,9 @@ Article.init(
 	},
 	{
 		sequelize,
-		modelName: 'Article',
+		modelName: 'article',
 		timestamps: true,
 	}
 );
-
-console.log(Article === sequelize.models.Article);
 
 module.exports = Article;

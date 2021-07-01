@@ -1,0 +1,33 @@
+<h2 mat-dialog-title>{{ dialogData.title }}</h2>
+<mat-dialog-content>
+  <form [formGroup]="categoryForm" (ngSubmit)="onSubmit()">
+    <mat-form-field appearance="outline" class="full-width-input">
+      <mat-label>Name</mat-label>
+      <input matInput formControlName="name" placeholder="Name">
+
+      <mat-error *ngIf="handleError('name', 'required')">
+        Name is <strong>required</strong>.
+      </mat-error>
+      <mat-error *ngIf="handleError('name', 'minlength')">
+        Name must be at least <strong>4 characters</strong>.
+      </mat-error>
+    </mat-form-field>
+
+    <mat-form-field appearance="outline" class="full-width-input">
+      <mat-label>Description</mat-label>
+      <input matInput formControlName="description" placeholder="Description">
+
+      <mat-error *ngIf="handleError('description', 'required')">
+        Description is <strong>required</strong>.
+      </mat-error>
+      <mat-error *ngIf="handleError('description', 'minlength')">
+        Description must be at least <strong>4 characters</strong>.
+      </mat-error>
+    </mat-form-field>
+
+    <mat-dialog-actions>
+      <button mat-raised-button color="warn" mat-dialog-close>Cancel</button>
+      <button mat-raised-button color="primary" type="submit" [disabled]="!categoryForm.valid">Save</button>
+    </mat-dialog-actions>
+  </form>
+</mat-dialog-content>

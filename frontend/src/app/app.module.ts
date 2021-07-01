@@ -27,6 +27,7 @@ import { UsersComponent } from './components/pages/admin/users/users.component';
 import { ArticlesComponent } from './components/pages/admin/articles/articles.component';
 import { CategoriesComponent } from './components/pages/admin/categories/categories.component';
 import { ArticleFormComponent } from './components/pages/admin/article-form/article-form.component';
+import { CategoryFormComponent } from './components/pages/admin/category-form/category-form.component';
 
 import { FlexLayoutModule } from '@angular/flex-layout';
 
@@ -77,6 +78,7 @@ const matSnackbarDefaultConfig: MatSnackBarConfig = {
     ArticlesComponent,
     CategoriesComponent,
     ArticleFormComponent,
+    CategoryFormComponent,
   ],
   imports: [
     BrowserModule,

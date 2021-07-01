@@ -1,7 +1,7 @@
 const { Article, Category } = require('../../models');
 
 const createArticle = async (
-	{ name, description, price, discount },
+	{ name, description, price, discount, categories },
 	res
 ) => {
 	let article = await Article.create(
@@ -13,10 +13,15 @@ const createArticle = async (
 		}
 	);
 
-	// categories.forEach(async (category) => {
-	// 	const createdCategory = await Category.create({ ...category });
-	// 	await article.addCategory(createdCategory);
-	// });
+	categories.forEach(async (category) => {
+		let createdCategory = await Category.findOne({
+			where: {
+				id: category
+			}
+		});
+
+		await article.addCategory(createdCategory);
+	});
 
 	res.send(article.toJSON());
 };

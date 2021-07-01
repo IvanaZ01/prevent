@@ -1,14 +1,23 @@
-const { Article } = require('../../models');
+const {
+  Article, ArticleCategory
+} = require('../../models');
 
 const updateArticle = async (
- id, res
-)=>{
-   await Article.destroy({
-        where:{
-            id
-        }
-    })
-    res.send()
+  id, res
+) => {
+  await ArticleCategory.destroy({
+    where: {
+      articleId: id
+    }
+  });
+
+  await Article.destroy({
+    where: {
+      id
+    }
+  });
+
+  res.send()
 }
 
 module.exports = updateArticle;
