@@ -1,10 +1,31 @@
-<div class="card">
-  <h2 class="name">{{ model.name | titlecase }}</h2>
-  <p class="desc">{{ model.description }}</p>
-  <p class="price">{{ model.price | currency }}</p>
+
+<div class="container">
   <div 
-  *ngIf="model.discount != 0"
-  class="discount-label">
-    <p  class="discount">-{{ model.discount }}%</p>
+  fxLayout="row wrap" fxLayoutGap="16px grid">
+    <div
+    fxFlex="25%" 
+    fxFlex.xs="100%" fxFlex.sm="33%"
+    *ngFor="let model of models"
+    >
+    <mat-card
+    class="example-card mat-elevation-z4">
+      <mat-card-header>
+       <mat-card-title>{{model.name | titlecase}}</mat-card-title>
+      </mat-card-header>
+      <mat-divider></mat-divider>
+      <mat-card-content>
+        <p class="desc">{{ model.description }}</p>
+        <div 
+        *ngIf="model.discount != 0"
+        class="discount-label">
+        <p  class="discount">-{{ model.discount }}%</p>
+      </div>
+    </mat-card-content>
+    <p align="right" class="price">{{ model.price | currency }}</p>
+    </mat-card>
+
+    </div>
+    
   </div>
+
 </div>

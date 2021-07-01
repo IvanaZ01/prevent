@@ -21,7 +21,7 @@ async function sendWelcomeEmail(email, name) {
 		Dear <strong>${name}</strong>,
     <br>
     <br>
-		You have succesffuly registered to PREVENT.
+		You have successfully registered to PREVENT.
     <br>
     <br>
 		Best,
@@ -49,13 +49,13 @@ async function sendResetPasswordRequestEmail(email, name, url) {
 }
 
 async function sendResetPasswordEmail(email, name, url) {
-  const subject = 'You have successfully reseted password on PREVENT';
+  const subject = 'You have successfully reset password on PREVENT';
   const html = 
   `
 		Dear <strong>${name}</strong>,
     <br>
     <br>
-    You have successfully reseted password on PREVENT
+    You have successfully reset password on PREVENT
 		Follow link to login: <a href="${url}" target="_blank">LOG IN</a>
     <br>
     <br>

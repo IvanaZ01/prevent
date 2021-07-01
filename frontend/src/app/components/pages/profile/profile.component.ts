@@ -38,8 +38,4 @@ export class ProfileComponent implements OnInit {
     }
   }
 
-  setNavState(event: any) {
-    this.isNavOpen = event;
-  }
-
 }

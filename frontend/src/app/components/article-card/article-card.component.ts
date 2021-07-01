@@ -6,11 +6,11 @@ import { Component, Input, OnInit } from '@angular/core';
   styleUrls: ['./article-card.component.scss'],
 })
 export class ArticleCardComponent implements OnInit {
-  @Input() model:any;
+  @Input() models:any;
 
   constructor() {}
 
   ngOnInit(): void {
-    
+    console.log(this.models)
   }
 }

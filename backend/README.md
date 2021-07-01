@@ -1,10 +1,12 @@
 ## Environment variables
+
 Create `.env` file in project root.
 In `.env.example` file can be found all environment variables needed.
 
 ## DB instructions
 
 ```sql
+DROP DATABASE IF EXISTS prevent;
 CREATE DATABASE prevent CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci;
 CREATE USER 'prevent'@'%' IDENTIFIED WITH mysql_native_password BY 'prevent';
 GRANT ALL PRIVILEGES ON *.* TO 'prevent'@'%';
