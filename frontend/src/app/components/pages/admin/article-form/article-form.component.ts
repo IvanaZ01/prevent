@@ -46,7 +46,6 @@ export class ArticleFormComponent implements OnInit {
   loadCategoriesList() {
     this._categoryService.getAll().subscribe(
       (success: any) => {
-        console.log(success);
         this.categoriesList = success;
       },
       (error: HttpErrorResponse) => {
@@ -64,7 +63,6 @@ export class ArticleFormComponent implements OnInit {
   }
 
   populateCategoriesDropdown(article: any) {
-    console.log(article);
     let categories: any[] = [];
 
     if (article?.categories) {

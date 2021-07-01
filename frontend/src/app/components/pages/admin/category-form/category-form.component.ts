@@ -32,7 +32,6 @@ export class CategoryFormComponent implements OnInit {
   }
 
   onSubmit() {
-    console.log(this.categoryForm.value);
     this.dialogRef.close(this.categoryForm.value);
   }
 

@@ -43,7 +43,6 @@ export class ArticlesComponent implements OnInit {
         });
 
         this.articles = success;
-        console.log(this.articles);
       },
       (error: HttpErrorResponse) => {
         this._notificationService.error(error.error);

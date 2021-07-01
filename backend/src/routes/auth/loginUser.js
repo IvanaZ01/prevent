@@ -5,7 +5,7 @@ const { User } = require('./../../models');
 const { generateAccessToken } = require('./../../jwt.service');
 
 
-const loginUser = async ({ username, password }, res) => {	
+const loginUser = async ({ username, password, rememberMe }, res) => {	
 	let user = await User.findOne({
 		where: {
 			username,
@@ -19,10 +19,8 @@ const loginUser = async ({ username, password }, res) => {
 
 	const match = await bcrypt.compare(password, user.passwordHash);
 
-	console.log('bcrypt.compare', {match});
-
 	if (match) {
-		const token = generateAccessToken(user);
+		const token = generateAccessToken(user, rememberMe);
 		res.json({token, user});
 	} else {
 		res.status(400).send('Credentials are not valid.');

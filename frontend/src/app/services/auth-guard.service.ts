@@ -17,7 +17,6 @@ export class AuthGuardService implements CanActivate {
   }
 
   async canActivate(): Promise<boolean> {
-    console.log(this._authService.isAuthenticated());
     if (!this._authService.isAuthenticated()) {
       this._notificationService.error('You need to be authenticated.')
       await this._router.navigateByUrl('/login');
