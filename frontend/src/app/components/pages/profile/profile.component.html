@@ -1,16 +1,17 @@
 <mat-card>
   <mat-card-header>
-    <mat-title>Profile</mat-title>
+    <mat-title>
+     <h1>Profile</h1>
+    </mat-title>
   </mat-card-header>
-  <mat-divider></mat-divider>
+  <!-- <mat-divider></mat-divider> -->
 
   <mat-card-content>
     <p> <b> ID:</b> {{ user.id }}</p>
     <p><b>Role:</b> {{ user.role }}</p>
     <p><b>Name:</b> {{ user.name }}</p>
     <p><b>Username:</b> {{ user.username }}</p>
-    <p><b>Email:</b> {{ user.email }}</p>
-    <p><b>Registered at:</b> {{ user.createdAt }}</p>
+    <p class="no-border"><b>Email:</b> {{ user.email }}</p>
     
   </mat-card-content>
 </mat-card>

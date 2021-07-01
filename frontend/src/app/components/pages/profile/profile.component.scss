@@ -1,18 +1,23 @@
 @import "./../../../../shared/variables";
 
+
 mat-card{
   width: 700px;
   margin: 1.5em auto;
 }
 
-mat-title{
-  padding: 0 0 1em;
+mat-title h1{
+  padding: 0 0 .6em;
+  font-size: 1.5rem;
 }
 
 mat-card-content{
-  padding: 0 2em;
+  padding: 0 2.3em;
   p {
     padding: 1em 0;
     border-bottom: 1px solid lightgray;
   }
+ .no-border{
+   border: 0;
+ }
 }
