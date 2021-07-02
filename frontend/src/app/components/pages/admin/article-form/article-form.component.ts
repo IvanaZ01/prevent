@@ -20,7 +20,7 @@ export class ArticleFormComponent implements OnInit {
   articleForm: FormGroup = this._fb.group({
     name: ['', [Validators.required]],
     price: ['', [Validators.required, Validators.min(0)]],
-    discount: ['', [Validators.required, Validators.min(4), Validators.max(100)]],
+    discount: ['', [Validators.required, Validators.min(0), Validators.max(100)]],
     description: ['', [Validators.required]],
     categories: ['', []],
   });

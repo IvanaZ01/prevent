@@ -32,9 +32,6 @@
       <mat-error *ngIf="handleError('discount', 'required')">
         Discount is <strong>required</strong>.
       </mat-error>
-      <mat-error *ngIf="handleError('discount', 'min')">
-        Discount must be <strong>greater than 0</strong>.
-      </mat-error>
       <mat-error *ngIf="handleError('discount', 'max')">
         Discount must be <strong>lower than 100</strong>.
       </mat-error>

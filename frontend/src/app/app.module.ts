@@ -10,7 +10,7 @@ import { AuthInterceptor } from './interceptors/auth.interceptor';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 
-import { NotificationComponent } from './component/notification/notification.component';
+import { NotificationComponent } from './components/notification/notification.component';
 import { ApiService } from './services/api/api.service';
 import { NotificationService } from './services/notification.service';
 

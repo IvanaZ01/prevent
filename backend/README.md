@@ -1,3 +1,7 @@
+## Node version
+
+`.nvmrc` file can be found in the `backend` folder with the version of node required for the project.  
+
 ## Environment variables
 
 Create `.env` file in project root.
@@ -13,9 +17,11 @@ GRANT ALL PRIVILEGES ON *.* TO 'prevent'@'%';
 FLUSH PRIVILEGES;
 ```
 
+After running the sql open the `backend` folder in terminal and run `npm run db-migrate` to get the database structure.
+
 ## Emails
 
-For sending emails we are using https://mailtrap.io/.
+For sending emails we are using https://mailtrap.io/ with Nodemailer.
 Sign up for account and set in `.env` file:
 
 ```
