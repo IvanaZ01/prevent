@@ -47,6 +47,8 @@ color="accent" (click)="createArticleModal()">Create new article</button>
   
 </table>
 
-<div *ngIf="!articles.length">
+<div 
+class="no-items"
+*ngIf="!articles.length">
   There are no articles.
 </div>

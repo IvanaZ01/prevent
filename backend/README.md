@@ -4,7 +4,7 @@
 
 ## Environment variables
 
-Create `.env` file in project root.
+Create `.env` file in backend root.
 In `.env.example` file can be found all environment variables needed.
 
 ## DB instructions

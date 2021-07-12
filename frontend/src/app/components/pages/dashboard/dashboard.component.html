@@ -1,1 +1,37 @@
+<div 
+[class.mat-elevation-z2]="true"
+class="wrapper">
+    <p>
+      <mat-form-field 
+      class="search"
+      appearance="outline">
+        <mat-label
+        >Search</mat-label>
+        <input 
+        (keydown.enter)="search()"
+        [(ngModel)]="filter.search"
+        matInput />
+        <mat-icon matSuffix>search</mat-icon>
+    </mat-form-field>
+</p>
+
+<button 
+color="primary"
+class="filter"
+mat-stroked-button 
+[matMenuTriggerFor]="menu">{{(filter.category != 0?  findCategory() : 'Filter') |  titlecase }}</button>
+<mat-menu #menu="matMenu">
+  <button 
+  (click)="setCat(0)"
+  (click)="search()"
+  mat-menu-item>None</button>
+  <button 
+  *ngFor="let category of categories"
+  (click)="setCat(category.id)"
+  (click)="search()"
+  mat-menu-item>{{category.name | titlecase}}</button>
+</mat-menu>
+</div>
+
+
 <app-article-card [models]="articles"></app-article-card>

@@ -31,3 +31,4 @@ Article.init(
 );
 
 module.exports = Article;
+

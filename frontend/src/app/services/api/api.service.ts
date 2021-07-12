@@ -12,8 +12,11 @@ export class ApiService {
 
   }
 
-  getAll(){
-    return this._http.get(this.url)
+  getAll(filter?:{search:string, category:number}){
+    if(!filter){
+      return this._http.get(this.url)
+    }
+    return this._http.get(this.url+`/search?search=${filter.search}&category=${filter.category}`)
   }
 
   create(resource:any){    

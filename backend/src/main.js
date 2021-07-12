@@ -33,6 +33,7 @@ const getAllArticles = require('./routes/article/getAllArticles');
 const updateArticle = require('./routes/article/updateArticle');
 const deleteArticle = require('./routes/article/deleteArticle')
 const viewArticle = require('./routes/article/viewArticle')
+const searchArticles = require('./routes/article/searchArticles')
 
 // category actions
 const createCategory = require('./routes/category/createCategory')
@@ -55,8 +56,9 @@ app.post('/user', (req, res) => createUser(req.body, res));
 app.put('/user/:id', authenticateToken, (req, res) => updateUser(req.params.id, req.body, res))
 
 // article routes
-app.get('/article', authenticateToken, (req, res) => getAllArticles(res))
+app.get('/article/search', authenticateToken, (req, res) => searchArticles(req.query, res))
 app.get('/article/:id', authenticateToken, (req, res) => viewArticle(req.params.id, res))
+app.get('/article', authenticateToken, (req, res) => getAllArticles(res))
 app.post('/article', authenticateToken, (req, res) => {
 	createArticle(req.body, res)
 })

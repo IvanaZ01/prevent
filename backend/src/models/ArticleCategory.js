@@ -7,6 +7,12 @@ class ArticleCategory extends Model {}
 
 ArticleCategory.init(
 	{
+		id: {
+			type: DataTypes.NUMBER,
+			allowNull: false,
+			autoIncrement: true,
+			primaryKey: true,
+		},
 		articleId: {
 			type: DataTypes.INTEGER,
 			references: {
