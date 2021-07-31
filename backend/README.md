@@ -22,7 +22,7 @@ After running the sql open the `backend` folder in terminal and run `npm run db-
 ## Emails
 
 For sending emails we are using https://mailtrap.io/ with Nodemailer.
-Sign up for account and set in `.env` file:
+Sign up for the account and set required variables in `.env` file:
 
 ```
 SMTP_HOST=smtp.mailtrap.io
@@ -30,3 +30,7 @@ SMTP_PORT=2525
 SMTP_USERNAME=you-will-get-this-after-sign-up
 SMTP_PASSWORD=you-will-get-this-after-sign-up
 ```
+
+## Starting the app
+
+To start the app use `npm start` command for the backend folder and `ng serve` for the frontend folder.
