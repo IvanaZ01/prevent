@@ -1,6 +1,6 @@
 ## Node version
 
-`.nvmrc` file can be found in the `backend` folder with the version of node required for the project.  
+`.nvmrc` file can be found in the `backend` folder with the version of node required for the project.
 
 ## Environment variables
 
